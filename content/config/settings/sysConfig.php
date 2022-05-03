@@ -6,12 +6,12 @@ namespace config\settings;
 
 /* Definimos las constantes que usaremos */
 
-//define("_ROUTE_", "/dashboard/systemUT/");     /* direccion del proyecto */
-//define("_THEME_", "/dashboard/systemUT/assets");   /* Direccion de recursos y estilos */
-//define("_INDEX_FILE_", "/dashboard/systemUT/index.php"); /* direccion del archivo index */
-define("_ROUTE_", "/");     /* direccion del proyecto */
-define("_THEME_", "/assets");   /* Direccion de recursos y estilos */
-define("_INDEX_FILE_", "/index.php"); /* direccion del archivo index */
+define("_ROUTE_", "/dashboard/systemUT-BETA/");     /* direccion del proyecto */
+define("_THEME_", "/dashboard/systemUT-BETA/assets");   /* Direccion de recursos y estilos */
+define("_INDEX_FILE_", "/dashboard/systemUT-BETA/index.php"); /* direccion del archivo index */
+//define("_ROUTE_", "/");     /* direccion del proyecto */
+//define("_THEME_", "/assets");   /* Direccion de recursos y estilos */
+//define("_INDEX_FILE_", "/index.php"); /* direccion del archivo index */
 
 define('_DIRECTORY_', 'content/controllers/');      /* Direccion de controladores */
 define("_MODEL_", "content/modelo/");       /* direccion de los modelos */
@@ -24,10 +24,10 @@ define("_DB_WEB_", "ut");        /* nombre de la base de datos */
 define('_HOST_', 'localhost');       /* nombre del host */
 define("_DB_USER_", "root");         /* nombre del usuario de la BD */
 define("_DB_PASS_", "");          /* contraseña de la base de datos  */
-//	define("_COMPLEMENT_" , "/dashboard/systemUT/view/assets/");					/* direccion del proyecto */
-define("_COMPLEMENT_", "/");     /* direccion del proyecto */
+	define("_COMPLEMENT_" , "/dashboard/systemUT/view/assets/");					/* direccion del proyecto */
+//define("_COMPLEMENT_", "/");     /* direccion del proyecto */
 
-define("_NAMESYSTEM_", "UT");     /* direccion del proyecto */
+define("_NAMESYSTEM_", "UT-BETA");     /* direccion del proyecto */
 
 /* clase con el nombre config  */
 

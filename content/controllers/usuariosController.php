@@ -66,6 +66,12 @@ class usuariosController {
         }
     }
 
+public function byCedula($cedula) {
+            $this->usuario->setCedula($cedula);
+            echo json_encode($this->usuario->ConsultarOne());
+    }
+
+
     public function Editar($id) {
 
         $method = $_SERVER['REQUEST_METHOD'];

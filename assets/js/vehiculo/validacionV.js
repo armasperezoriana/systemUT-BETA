@@ -20,7 +20,7 @@ $(document).ready(function(){
             }).then((isConfirm) => {
                 if (isConfirm.value){            
                     $.ajax({
-                        url:'./Vehiculos/Registrar',
+                        url:'Vehiculos/Registrar',
                         type:'POST',
                         data: {
                           placa: placa,

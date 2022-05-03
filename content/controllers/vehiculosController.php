@@ -28,7 +28,7 @@
 		}
 		
 		public function Registrar(){
-						if(!empty($_POST['placa']) && !empty($_POST['modelo'])){
+				if(!empty($_POST['placa']) && !empty($_POST['modelo'])){
 				$placa=$_POST['placa'];
 				$modelo=$_POST['modelo'];
 				$funcionamiento=$_POST['funcionamiento'];
@@ -37,7 +37,7 @@
 				$this->vehiculo->setModelo($modelo);
 				$this->vehiculo->setFuncionamiento($funcionamiento);
 				//Agregar un Consultar para ver si existe Antes de Guardar o Rechazar;
-				$result = $this->vehiculo->Consultar();
+				$result = $this->vehiculo->ConsultarOne();
 				if($result['ejecucion']==true){
 					if(count($result)>1){
 						echo "3";
