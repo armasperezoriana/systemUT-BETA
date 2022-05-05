@@ -13,7 +13,7 @@
 	    private $username;
 	    private $rol;
 	    private $password;
-	    private $email;
+	    private $correo;
 	    private $fechaRecuperacion;
 
 		public function __construct(){
@@ -51,6 +51,20 @@
 				return $errorReturn;
 			}
 		}
+		public function ObtenerOne($id){
+			try {
+				$query = parent::prepare("SELECT * FROM usuarios WHERE id_usuario = $id");
+				$respuestaArreglo = '';
+				$query->execute();
+				$query->setFetchMode(parent::FETCH_ASSOC);
+				$respuesta = $query->fetch(parent::FETCH_ASSOC); 
+				return $respuesta;
+			} catch (PDOException $e) {
+				$errorReturn = ['ejecucion' => false];
+				$errorReturn += ['info' => "error sql:{$e}"];
+				return $errorReturn;
+			}
+		}
 		
 
 		public function Agregar(){
@@ -68,7 +82,7 @@
 					}
 				}
 
-				$query = parent::prepare("INSERT INTO usuarios (id_usuario, cedula, usuario, nombre, apellido, contrasena, rol, status) VALUES ($id, '{$this->cedula}', '{$this->username}', '{$this->nombre}', '{$this->apellido}', '{$this->password}', '{$this->rol}', 1)");
+				$query = parent::prepare("INSERT INTO usuarios (id_usuario, cedula, usuario, nombre, apellido, contrasena, rol, correo, status) VALUES ($id, '{$this->cedula}', '{$this->username}', '{$this->nombre}', '{$this->apellido}', '{$this->password}', '{$this->rol}', '{$this->correo}', 1)");
 				$respuestaArreglo = '';
 				$query->execute();
 				$query->setFetchMode(parent::FETCH_ASSOC);
@@ -84,38 +98,30 @@
 
 
 
-		public function Modificar($data){
-			   try {
-			   	if($this->contrasena=""){
-		        $query = parent::prepare('UPDATE usuarios SET  nombre = :nombre, apellido = :apellido, usuario = :usuario, rol = :rol, cedula = :cedula WHERE id = :id');
-		        $query->execute(['cedula'=>$data['cedula'], 'nombre'=>$data['nombre'],  'apellido'=>$data['apellido'], 'usuario'=>$data['usuario'], 'rol'=>$data['rol']]);
-
-		        }else{
-
-		        	 $query = parent::prepare('UPDATE usuarios SET  nombre = :nombre, apellido = :apellido, usuario = :usuario, contrasena = :contrasena , rol = :rol, cedula = :cedula WHERE id = :id');
-		        $query->execute(['cedula'=>$data['cedula'], 'nombre'=>$data['nombre'],  'apellido'=>$data['apellido'], 'usuario'=>$data['usuario'], 'contrasena'=>$data['contrasena'], 'rol'=>$data['rol']]);
-		        }
-
-		        if ( $query->rowCount() ) {
-		          return true;
-		        } else {
-		          return false;
-		        }
-
-		      } catch (PDOException $e) {
-		          echo $e->getMessage();
-		          echo '<br>';
-		          echo $e->getCode();
-		          echo '<br>';
-		        return false;
-		      }
-		    }
+		public function Modificar(){
+			try{
+				$query = parent::prepare("UPDATE usuarios SET cedula = '$this->cedula', usuario = '$this->username', 
+					nombre = '$this->nombre', apellido = '$this->apellido', contrasena = '$this->password', rol = '$this->rol', correo = '$this->correo'
+					WHERE id_usuario = $this->id_usuario");
+				$respuestaArreglo = '';
+				$query->execute();
+				$query->setFetchMode(parent::FETCH_ASSOC);
+				$respuestaArreglo = $query->fetchAll(parent::FETCH_ASSOC); 
+				$respuestaArreglo += ['ejecucion' => true];
+				return $respuestaArreglo;
+			} 
+			 catch (PDOException $e) {
+				$errorReturn = ['ejecucion' => false];
+				$errorReturn += ['info' => "error sql:{$e}"];
+				return $errorReturn;
+			}
+		}
 
 
 		public function Borrar(int $id){
 			try {
 
-				$query = parent::prepare("DELETE usuarios WHERE id = :id VALUES ($id, '{$this->cedula}', '{$this->username}', '{$this->nombre}', '{$this->apellido}', '{$this->password}', '{$this->rol}', 0)");
+				$query = parent::prepare("DELETE usuarios WHERE id = :id VALUES ($id, '{$this->cedula}', '{$this->username}', '{$this->nombre}', '{$this->apellido}', '{$this->password}', '{$this->rol}', '{$this->correo}', 0)");
 				
 				$respuestaArreglo = '';
 				$query->execute();
@@ -179,6 +185,10 @@
 		public function setPassword($pass){
 			$this->password = $pass;
 		}
+		public function setCorreo($correo){
+			$this->correo = $correo;
+		}
+
 
 
 		public function getId(){
@@ -201,6 +211,9 @@
 		}
 		public function getPassword(){
 			return $this->password;
+		}
+		public function getCorreo(){
+			return $this->correo;
 		}
 
 	}

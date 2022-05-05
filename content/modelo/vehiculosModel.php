@@ -85,7 +85,7 @@ public function setId($id){
 			$this->placa = $placa;
 		}
 		public function setModelo($modelo){
-			$this->modelo = modelo;
+			$this->modelo = $modelo;
 		}
 		public function setFuncionamiento($funcionamiento){
 			$this->funcionamiento = $funcionamiento;

@@ -13,19 +13,19 @@
   <!-- End of Footer -->
 
 
-        <script src="/view/vendor/jquery/jquery.min.js"></script>
-        <script src="/view/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="/view/vendor/jquery-easing/jquery.easing.min.js"></script>
-        <script src="/view/vendor/chart.js/Chart.min.js"></script>
-        <script src="/assets/js/sb-admin-2.min.js"></script>
-        <script src="/assets/js/demo/chart-area-demo.js"></script>
-        <script src="/assets/js/demo/chart-pie-demo.js"></script>
-        <script src="/view/vendor/plugins/sweetalert/sweet-alert.js"></script>
+        <script src="view/vendor/jquery/jquery.min.js"></script>
+        <script src="view/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="view/vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="view/vendor/chart.js/Chart.min.js"></script>
+        <script src="assets/js/sb-admin-2.min.js"></script>
+        <script src="assets/js/demo/chart-area-demo.js"></script>
+        <script src="assets/js/demo/chart-pie-demo.js"></script>
+        <script src="view/vendor/plugins/sweetalert/sweet-alert.js"></script>
 
-        <script src="/view/vendor/plugins/select2/js/select2.js"></script>
-        <script src="/view/vendor/plugins/DataTables/datatables.js"></script>
-        <script src="/view/vendor/plugins/DataTables/DataTables/js/dataTables.bootstrap.js"></script>
-        <!-- <script src="/view/vendor/plugins/DataTables/DataTables/js/dataTables.responsive.min.js"></script> -->
+        <script src="view/vendor/plugins/select2/js/select2.js"></script>
+        <script src="view/vendor/plugins/DataTables/datatables.js"></script>
+        <script src="view/vendor/plugins/DataTables/DataTables/js/dataTables.bootstrap.js"></script>
+        <!-- <script src="view/vendor/plugins/DataTables/DataTables/js/dataTables.responsive.min.js"></script> -->
 
 
         <!-- Logout Modal-->

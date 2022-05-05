@@ -62,7 +62,7 @@
                         </div>
                         <br>
                         <div class="table-responsive">
-                        <div class="card-body" style=''>
+                        <div class="card-body" style='background:;'>
                             <div class="row" style='font-size:0.9em;'>
                                 <table class="table table-striped datatable col-sm-12" id="" >
                                     <thead>
@@ -75,6 +75,7 @@
                                             <th></th>
                                              <th><center>Acción</center></th>
                                               <th></th>
+                                               <th></th>
                                         </tr>
                                     </thead>
                           
@@ -92,15 +93,29 @@
 
                         <div class="col-sm-7" style='text-align:right;'>
 
-                 <a href="#" class="btn btn-warning btn-icon-split editarbtn" name="editar" id="'$value['id_vehiculo']'" href="#" data-toggle="modal" data-target="#ModificarvehiculoModal">
-                                        <span class="icon text-white-50" >
-                                            <i class="fas fa-flag"></i>
-                                        </span>
-                                        <span class="text">Modificar</span>
-                                    </a>
-                        </div>
-                    </td>
-                              <td> <div class="col-sm-7" style='text-align:right;'>
+                 <a href="#" class="btn btn-warning btn-icon-split consultar" data-id="<?= $value['id_vehiculo'] ?>" name="editar" id="'$value['id_vehiculo']'" href="#" name="consultar">
+                      <span class="icon text-white-50">
+                                                                    <i class="fas fa-search"></i>
+                                                                </span>
+                                                                <span class="text">Consultar</span>
+                                                            </a>
+                                                        </div>
+                                                        <td>
+
+                                                        <div class="col-sm-7" style='text-align:right;'>
+
+                                                            <a href="#" data-id="<?= $value['id_vehiculo'] ?>" class="btn btn-warning btn-icon-split editar" name="editar" >
+                                                                <span class="icon text-white-50">
+                                                                    <i class="fas fa-flag"></i>
+                                                                </span>
+                                                                <span class="text">Modificar</span>
+                                                            </a>
+                                                        </div>
+
+
+                                                    </td>
+                                                     <td>
+                                                        <div class="col-sm-7" style='text-align:right;'>
                                                             <?php if ($value['status'] == 1) { ?>
                                                                 <a href="#" data-id="<?= $value['id_vehiculo'] ?>" class="btn btn-danger btn-icon-split inhabilitar" data-toggle="modal" data-target="">
                                                                     <span class="icon text-white-50">
@@ -123,12 +138,15 @@
                                             <?php endif ?>
                                         <?php endforeach ?>
 
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div>
 
+
+                                        
             </div>   <!-- MODAL DE ayuda-->
                     
                              <div class="col-sm-7" style='text-align:right;'>
@@ -154,6 +172,7 @@
         }
     </style>
     <div class="modal fade" id="AgregarVehiculosModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding:0;">
+
         <div class="container">
                 <div class="modal-dialog">
                     <div class="" role="document">
@@ -193,8 +212,8 @@
                                         <label for="funcionamiento"><b>Funcionamiento</b></label>
                                         <select class="form-control select2" name="funcionamiento" id="funcionamiento">
                                                   <option value="">...</option>
-                                                <option value="1">Operativo</option>
-                                                <option value="2">Inoperativo</option>
+                                                <option value="Operativo">Operativo</option>
+                                                <option value="Inoperativo">Inoperativo</option>
                                             </select>
                                          <span class="errorModelo" style="color:red"></span>
                                     </div>
@@ -227,7 +246,9 @@
             font-size:0.8em;
         }
     </style>
-    <div class="modal fade" id="ModificarvehiculoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding:0;" id="'$value['id_vehiculo']'">
+ <div class="modal fade" id="ModificarVehiculoModal" tabindex="-1" role="dialog" aria-hidden="true" value="<? const id = $vehiculo->id;  ?> " style="padding:0;">
+    <form id="modificarVehiculo" method="POST">
+                <input type="hidden" id="id_vehiculo" name="id_vehiculo">
         <div class="container">
                 <div class="modal-dialog">
                     <div class="" role="document">
@@ -358,8 +379,6 @@
      
 </body>
 
-<script type="text/javascript" src="'../../assets/js/vehiculo/validacionV.js">
- 
-</script> 
+<script type="text/javascript" src="'../../assets/js/vehiculo/validacionV.js"></script>
 
 </html>

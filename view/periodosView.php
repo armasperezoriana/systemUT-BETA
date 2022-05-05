@@ -39,7 +39,7 @@
           <div class="box">
             <div class="box-header">
               <div class="col-xs-12 col-sm-6">
-                <img src="assets/img/logolista.png" style="width:25px;color:red !important;">
+                <img src="assets/img/logolista.png" style="width:25px;color:red !importante;">
                 <h3 class="box-title"><?php echo "".$url.""; ?></h3>
               </div>
               <div class="col-xs-12 col-sm-6" style="text-align:right">

@@ -84,14 +84,14 @@ a:hover{
   background:#eee !important;
 }
 .treeview.active{
-  background: #red !important;
+  background: :red !important;
 }
 .bg-fucsia2, .bg-fucsia2 a{
   background: #C71A5F !important;
   color: #CCC !important;
 }
 .sidebar-toggle:hover{
-  background: #01366F66 !important; 
+  background: #01366F66 !important; C71A5F E52E77
 }
 .skin-blue .sidebar-menu > li > a {
   border-left: 3px solid transparent;

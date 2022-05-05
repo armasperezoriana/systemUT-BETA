@@ -61,7 +61,7 @@
                         </div>
                         <br>
                         <div class="table-responsive">
-                        <div class="card-body" >
+                        <div class="card-body" style='background:;'>
                             <div class="row" style='font-size:0.9em;'>
                                 <table class="table table-striped datatable col-sm-12" id="" >
                                     <thead>
