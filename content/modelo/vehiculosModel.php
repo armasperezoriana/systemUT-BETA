@@ -50,6 +50,21 @@
 			}
 		}
 
+
+public function ObtenerOne($id){
+			try {
+				$query = parent::prepare("SELECT * FROM vehiculos WHERE id_vehiculo = $id");
+				$respuestaArreglo = '';
+				$query->execute();
+				$query->setFetchMode(parent::FETCH_ASSOC);
+				$respuesta = $query->fetch(parent::FETCH_ASSOC); 
+				return $respuesta;
+			} catch (PDOException $e) {
+				$errorReturn = ['ejecucion' => false];
+				$errorReturn += ['info' => "error sql:{$e}"];
+				return $errorReturn;
+			}
+		}
 		public function Agregar(){
 			$id= 0;
 			try {
@@ -77,6 +92,75 @@
 				return $errorReturn;
 			}
 		}
+
+public function Modificar(){
+			try{
+				$query = parent::prepare("UPDATE vehiculos SET placa = '$this->placa', modelo = '$this->modelo', 
+					funcionamiento = '$this->funcionamiento'
+					WHERE id_vehiculo = $this->id_vehiculo");
+				$respuestaArreglo = '';
+				$query->execute();
+				$query->setFetchMode(parent::FETCH_ASSOC);
+				$respuestaArreglo = $query->fetchAll(parent::FETCH_ASSOC); 
+				$respuestaArreglo += ['ejecucion' => true];
+				return $respuestaArreglo;
+			} 
+			 catch (PDOException $e) {
+				$errorReturn = ['ejecucion' => false];
+				$errorReturn += ['info' => "error sql:{$e}"];
+				return $errorReturn;
+			}
+		}
+
+
+public function Borrar(int $id){
+			try {
+
+				$query = parent::prepare("DELETE vehiculos WHERE id = :id VALUES ($id, '{$this->placa}', '{$this->modelo}', '{$this->funcionamiento}', 0)");
+				
+				$respuestaArreglo = '';
+				$query->execute();
+				$query->setFetchMode(parent::FETCH_ASSOC);
+				$respuestaArreglo = $query->fetchAll(parent::FETCH_ASSOC); 
+				$respuestaArreglo += ['ejecucion' => true];
+				return $respuestaArreglo;
+			} catch (PDOException $e) {
+				$errorReturn = ['ejecucion' => false];
+				$errorReturn += ['info' => "error sql:{$e}"];
+				return $errorReturn;
+			}
+		}
+
+		public function Inhabilitar($id){    //Método que elimina logicamente un registro
+			try{
+				$consulta = parent::prepare("UPDATE vehiculos SET status=0 WHERE id_vehiculo=$id");
+				$consulta->execute();
+				$respuestaArreglo = ['ejecucion' => true];
+				return $respuestaArreglo;
+	
+			} catch (PDOException $e) {
+				$errorReturn = ['ejecucion' => false];
+				$errorReturn += ['info' => "error sql:{$e}"];
+				return $errorReturn;
+			}
+		}
+
+		public function Habilitar($id){    //Método que habilita logicamente un registro
+			try{
+				$consulta = parent::prepare("UPDATE vehiculos SET status=1 WHERE id_vehiculo=$id");
+				$consulta->execute();
+				$respuestaArreglo = ['ejecucion' => true];
+				return $respuestaArreglo;
+	
+			} catch (PDOException $e) {
+				$errorReturn = ['ejecucion' => false];
+				$errorReturn += ['info' => "error sql:{$e}"];
+				return $errorReturn;
+			}
+		}
+
+
+
 
 public function setId($id){
 			$this->id_vehiculo = $id;

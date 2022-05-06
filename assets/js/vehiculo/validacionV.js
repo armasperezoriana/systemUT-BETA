@@ -66,7 +66,91 @@ $(document).ready(function () {
         }
     });
 });
-// Inhabilitar Usuario
+
+// Modificar Vehiculo
+
+$(".ModificarVehiculo").click(function() {
+            var valido = validar(true);
+               
+            if (valido == true) {
+
+                var id_vehiculo = $("#modificarVehiculo").find("#id_vehiculo").val();
+                console.log($("#modificarVehiculo"))
+                console.log($("#modificarVehiculo").find("#placa"));
+                var modelo = $("#modificarVehiculo").find("#modelo").val();
+                console.log($("#modificarVehiculo").find("#funcionamiento").val());
+          
+                
+                var placa= $("#modificarVehiculo").find("#placa").val();
+            
+                // alert(pass);
+                swal.fire({
+                    title: "¿Desea guardar los datos del vehiculo ingresados?",
+                    text: "Estos datos serán guardados.",
+                    type: "question",
+                    showCancelButton: true,
+                    // confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Guardar",
+                    cancelButtonText: "Cancelar",
+                    closeOnConfirm: false,
+                }).then((isConfirm) => {
+                    if (isConfirm.value) {
+                        $.ajax({
+                            url: './Vehiculos/Modificar',
+                            type: 'POST',
+                            data: {
+                                id_vehiculo: id_vehiculo,
+                                placa: placa,
+                                modelo: modelo,
+                                funcionamiento: funcionamiento,
+                                
+                            },
+                            success: function(respuesta) {
+                                // alert(respuesta);
+                                if (respuesta == "1") {
+                                    swal.fire({
+                                        type: 'success',
+                                        title: 'Registro modificado exitosamente',
+                                    }).then((isConfirm) => {
+                                        location.href = './Vehiculos';
+                                    });
+                                }
+                                if (respuesta == "2") {
+                                    swal.fire({
+                                        type: 'error',
+                                        title: 'Error al modificar los datos',
+                                        text: 'Contacte con el soporte',
+                                    });
+                                }
+                                if (respuesta == "3") {
+                                    swal.fire({
+                                        type: 'warning',
+                                        title: 'Datos repetidos',
+                                        text: 'Vuelva a intentar',
+                                    });
+                                }
+                            }
+                        });
+                    } else {
+                        swal.fire({
+                            type: 'error',
+                            title: '¡Proceso cancelado!',
+                        });
+                    }
+                });
+
+
+            }
+
+        });
+
+
+
+
+
+
+
+// Inhabilitar Vehiculo
 $('body').on('click', '.inhabilitar', function (e) {
     e.preventDefault();
 
@@ -85,7 +169,7 @@ $('body').on('click', '.inhabilitar', function (e) {
         }
     })
 });
-// Habilitar Usuario
+// Habilitar Vehiculo
 $('body').on('click', '.habilitar', function (e) {
     e.preventDefault();
 

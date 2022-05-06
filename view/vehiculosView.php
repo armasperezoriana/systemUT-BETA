@@ -3,6 +3,9 @@
 
 <head>
     <title><?php echo _NAMESYSTEM_; ?> | <?php if(!empty($action)){echo $action; } ?> <?php if(!empty($url)){echo $url;} ?></title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
 
@@ -91,16 +94,19 @@
                                             <td><?=$value['id_mantenimiento']?></td>
                                             <td> 
 
-                        <div class="col-sm-7" style='text-align:right;'>
+                    <div class="col-sm-7" style='text-align:right;'>
 
-                 <a href="#" class="btn btn-warning btn-icon-split consultar" data-id="<?= $value['id_vehiculo'] ?>" name="editar" id="'$value['id_vehiculo']'" href="#" name="consultar">
-                      <span class="icon text-white-50">
+                                                            <a href="#" data-id="<?= $value['id_vehiculo'] ?>" class="btn btn-info btn-icon-split consultar" name="consultar" >
+                                                                <span class="icon text-white-50">
                                                                     <i class="fas fa-search"></i>
                                                                 </span>
                                                                 <span class="text">Consultar</span>
                                                             </a>
                                                         </div>
-                                                        <td>
+
+
+                                                    </td>
+                                                    <td>
 
                                                         <div class="col-sm-7" style='text-align:right;'>
 
@@ -114,7 +120,7 @@
 
 
                                                     </td>
-                                                     <td>
+                                                    <td>
                                                         <div class="col-sm-7" style='text-align:right;'>
                                                             <?php if ($value['status'] == 1) { ?>
                                                                 <a href="#" data-id="<?= $value['id_vehiculo'] ?>" class="btn btn-danger btn-icon-split inhabilitar" data-toggle="modal" data-target="">
@@ -145,25 +151,23 @@
                     </div>
                 </div>
 
+            </div> <!-- MODAL DE ayuda-->
 
-                                        
-            </div>   <!-- MODAL DE ayuda-->
-                    
-                             <div class="col-sm-7" style='text-align:right;'>
-                            <span class="btn btn-primary" href="#" data-toggle="modal" data-target="#AyudaModal">
-                                Ayuda
-                            </span>
+            <div class="col-sm-7" style='text-align:right;'>
+                <span class="btn btn-primary" href="#" data-toggle="modal" data-target="#AyudaModal">
+                    Ayuda
+                </span>
 
-                        </div>  
+            </div>
 
-        
-          <?php require_once'view/assets/footer.php'; ?>
-        <!-- End of Content Wrapper -->
-    </div>
-    <!-- End of Page Wrapper -->
 
-    <!-- MODAL DE REGISTRARSE-->
-                   <a class="scroll-to-top rounded" href="#page-top">
+            <?php require_once 'view/assets/footer.php'; ?>
+            <!-- End of Content Wrapper -->
+        </div>
+        <!-- End of Page Wrapper -->
+
+        <!-- MODAL DE REGISTRARSE-->
+             <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
     <style type="text/css">
@@ -237,32 +241,148 @@
      </div>
 
 
-<!-- MODAL DE MODIFICAR-->
-              <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-    <style type="text/css">
-        .modal{
-            font-size:0.8em;
-        }
-    </style>
- <div class="modal fade" id="ModificarVehiculoModal" tabindex="-1" role="dialog" aria-hidden="true" value="<? const id = $vehiculo->id;  ?> " style="padding:0;">
-    <form id="modificarVehiculo" method="POST">
-                <input type="hidden" id="id_vehiculo" name="id_vehiculo">
-        <div class="container">
-                <div class="modal-dialog">
-                    <div class="" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header bg-primary" style="color:#FFF">
-                                <h5 class="modal-title" id="exampleModalLabel">Modificar Vehiculo</h5>
-                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                            </div>
 
-                           <div class="modal-body">
-                                <div class="row">
-                                    <div class="form-group col-sm-12 col-md-6">
+
+
+       <!-- MODAL DE MODIFICAR-->
+
+        <div class="modal fade" id="ModificarVehiculoModal" tabindex="-1" role="dialog" aria-hidden="true" value="<? const id = $vehiculo->id;  ?>
+" style="padding:0;">
+            <form id="modificarVehiculo" method="POST">
+                <input type="hidden" id="id_vehiculo" name="id_vehiculo">
+                <div class="container">
+                    <div class="modal-dialog">
+                        <div class="" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header bg-primary" style="color:#FFF">
+                                    <h5 class="modal-title">
+                                        <center>Modificar Vehiculo</center>
+                                    </h5>
+                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+
+                                <div class="col-sm-7" style='text-align:right;'>
+                                    <span href="#" data-toggle="modal" data-target="ModificarVehiculoModal">
+
+                                    </span>
+                                </div>
+
+                                <div class="modal-body">
+                                    <div class="table-responsive">
+                                        <div class="card-body">
+                                            <div class="row" style='font-size:0.9em;'>
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="form-group col-sm-12 col-md-6">
+
+                                                            <label for="nombre"><b>Nombre</b></label>
+                                                            <input type="text" class="form-control" name="nombre" id="nombre">
+                                                            <span class="errorNombre" style="color:red"></span>
+                                                        </div>
+                                                        <div class="form-group col-sm-12 col-md-6">
+                                                            <label for="apellido"><b>Apellido</b></label>
+                                                            <input type="text" class="form-control" name="apellido" id="apellido">
+                                                            <span class="errorApellido" style="color:red"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="form-group col-sm-12 col-md-6">
+                                                            <label for="cedula"><b>Cedula</b></label>
+                                                            <input type="text" class="form-control" name="cedula" id="cedula">
+                                                            <span class="errorCedula" style="color:red"></span>
+                                                        </div>
+                                                        <div class="form-group col-sm-12 col-md-6">
+                                                            <label for="username"><b>Usuario</b></label>
+                                                            <input type="text" class="form-control" name="username" id="username">
+                                                            <span class="errorUsername" style="color:red"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="form-group col-sm-12 col-md-12">
+                                                            <label for="rol"><b>Roles</b></label>
+                                                            <select style="width: 100%;" class="form-control select2" name="rol" id="rol">
+                                                                <option></option>
+                                                                <?php foreach ($roles as $rols) : ?>
+                                                                    <?php if (!empty($rols['id_rol'])) : ?>
+                                                                        <option><?= $rols['nombre_rol'] ?></option>
+                                                                    <?php endif ?>
+                                                                <?php endforeach ?>
+                                                            </select>
+                                                            <span class="errorRol" style="color:red"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="form-group col-sm-12 col-md-6">
+                                                            <label for="pass1"><b>Contraseña</b></label>
+                                                            <input type="password" class="form-control" name="pass1" id="pass1" value="" placeholder="Ingresa tu clave">
+                                                            <span class="errorPass1" style="color:red"></span>
+
+                                                        </div>
+                                                        <br>
+                                                        <div class="row">
+                                                            <div class="form-group col-sm-12 col-md-6">
+                                                                <label for="pass2"><b> Repetir Contraseña</b></label>
+                                                                <input type="password" class="form-control" name="pass2" id="pass2" value="" placeholder="Ingresa tu clave">
+                                                                <span class="errorPass2" style="color:red"></span>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="form-group col-sm-12 col-md-12">
+                                                            <label for="correo"><b>Correo</b></label>
+                                                            <input style="width: 100%;" type="email" class="form-control" name="correo" id="correo" value="<?= $value['correo'] ?>" placeholder="example@gmail.com">
+                                                            <span class="correo" style="color:red"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button class=" btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                                                        <a class="ModificarVehiculo btn btn-primary" href="#">Guardar Datos</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+
+  <!-- MODAL DE CONSULTAR-->
+
+
+        <div class="modal fade" id="ConsultarVehiculoModal" tabindex="-1" role="dialog" aria-hidden="true" value="<? const id = $vehiculo->id;  ?>
+" style="padding:0;">
+            <form id="consultarVehiculo" method="POST">
+                <input type="hidden" id="id_vehiculo" name="id_vehiculo">
+                <div class="container">
+                    <div class="modal-dialog">
+                        <div class="" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header bg-primary" style="color:#FFF">
+                                    <h5 class="modal-title">
+                                        <center>Consultar Vehiculo</center>
+                                    </h5>
+                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+
+                                <div class="col-sm-7" style='text-align:right;'>
+                                    <span href="#" data-toggle="modal" data-target="ModificarVehiculoModal">
+
+                                    </span>
+                                </div>
+
+                                <div class="modal-body">
+                                         <div class="form-group col-sm-12 col-md-6">
                                         <?php foreach ($vehiculo as $value): ?>
                                             <?php if (($value['id_vehiculo'])): ?>
                                         
@@ -299,25 +419,32 @@
                             <?php endforeach ?>
                                     </div>
                                     
-                            <div class="modal-footer">
-                                <button class=" btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                                <a class="EnviarVehiculoModificar btn btn-primary" href="#">Guardar cambios</a>
+                                                    <div class="modal-footer">
+                                                        <button class=" btn btn-secondary" type="button" data-dismiss="modal">Cerrar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </form>
         </div>
-       </div>
-        </div>
-         </div>  
+    </div>
+    </div>
 
 
-     </div>
+    </div>
 
 
- <!-- MODULo de AYUDA -->
 
-            <a class="scroll-to-top rounded" href="#page-top">
+
+    <!-- MODULo de AYUDA -->
+
+    <a class="scroll-to-top rounded" href="#page-top">
                             <i class="fas fa-angle-up"></i>
                         </a>
                         <style type="text/css">
