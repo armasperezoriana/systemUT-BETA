@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-05-2022 a las 22:06:37
+-- Tiempo de generación: 06-05-2022 a las 22:21:18
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 7.4.27
 
@@ -337,7 +337,15 @@ INSERT INTO `bitacora` (`id_bitacora`, `cedula`, `usuario`, `operacion`, `host`,
 (311, '26561633', 'root@localhost', 'Se Modifico un campo de esta tabla', 'localhost', '2022-05-05', '18:39:10', 'Usuario', NULL),
 (312, '$$%$$%%$', 'root@localhost', 'Se Modificaron los datos de un chofer', 'localhost', '2022-05-06', '15:22:36', 'Chofer', NULL),
 (313, '$$%$$%%$', 'root@localhost', 'Se Modificaron los datos de un chofer', 'localhost', '2022-05-06', '15:22:43', 'Chofer', NULL),
-(314, '$%%%$$$$', 'root@localhost', 'Se Modificaron los datos de un chofer', 'localhost', '2022-05-06', '15:22:50', 'Chofer', NULL);
+(314, '$%%%$$$$', 'root@localhost', 'Se Modificaron los datos de un chofer', 'localhost', '2022-05-06', '15:22:50', 'Chofer', NULL),
+(315, '$%%$%$%$', 'root@localhost', 'Se elimino un Chofer del registro', 'localhost', '2022-05-06', '16:09:46', 'Choferes', NULL),
+(316, '$%%%$$$$', 'root@localhost', 'Se elimino un Chofer del registro', 'localhost', '2022-05-06', '16:11:29', 'Choferes', NULL),
+(317, '$%%%$$$$', 'root@localhost', 'Se elimino un Chofer del registro', 'localhost', '2022-05-06', '16:11:47', 'Choferes', NULL),
+(318, '$$%$$%%$', 'root@localhost', 'Se elimino un Chofer del registro', 'localhost', '2022-05-06', '16:18:25', 'Choferes', NULL),
+(319, '$%%$$$%$', 'root@localhost', 'Se elimino un Chofer del registro', 'localhost', '2022-05-06', '16:18:25', 'Choferes', NULL),
+(320, '$%%$%%%$', 'root@localhost', 'Se elimino un Chofer del registro', 'localhost', '2022-05-06', '16:18:25', 'Choferes', NULL),
+(321, '$%%$%$%$', 'root@localhost', 'Se elimino un Chofer del registro', 'localhost', '2022-05-06', '16:18:26', 'Choferes', NULL),
+(322, '$$%$$%%$', 'root@localhost', 'Se elimino un Chofer del registro', 'localhost', '2022-05-06', '16:18:26', 'Choferes', NULL);
 
 -- --------------------------------------------------------
 
@@ -354,20 +362,6 @@ CREATE TABLE `choferes` (
   `telefono` varchar(11) COLLATE utf8_bin DEFAULT NULL,
   `status` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Volcado de datos para la tabla `choferes`
---
-
-INSERT INTO `choferes` (`id_choferes`, `placa`, `nombre`, `apellido`, `cedula`, `telefono`, `status`) VALUES
-(13, 'KOWP145', 'Erwin', 'Armas', '$$%$$%%$%%%$$%%%$$$$$%%%$$$/%%%$$%$$%%$%%$$$%%$$$$$$%%$', '04160360067', 1),
-(14, 'OGA1703', 'Oriana', 'Armas', '$%%$$$%$$%%$%%$$$%%$%$$$$$$$$$$/%%$$%$$$%%$%%$$$%%$%$%$$%%$%%$$', '04145448669', 0),
-(15, 'EAP685', 'Antonio', 'Perez', '$%%$%%%$$%%$%$$$$%%$$$$$$$$$$$$/%%$$%$$$%%$%%$$$%%$%$%$$%%%$$$$', '04245660045', 0),
-(16, 'VAS654', 'Juan', 'Jimenez', '$%%$%$%$$%%$%%%$$%%%$$$$$$$$$$$/%%$$$%$$%%$$$%$$%%$$%$$$%%$%$$$', '04127895541', 0),
-(17, 'EAP685', 'Orlando', 'Guerra', '$%%%$$$$$%%%$$%$$%%$%%$$$$$$$$$/%%$$$%$$%%$$%$$$%%$%$$$$%%$%$%$', '04165502352', 0),
-(18, 'KVT47V', 'Jose', 'Tillero', '$%%$%$%$$%%%$$%$$%%$%$$$$$$$$$$/%%$%%$$$%%$%$$$$%%$%%%$$%%%$$$$', '04169486868', 0),
-(19, 'KVT47V', 'Cefora', 'Armas', '$$%$$%%$%%%$$%%$%$$$$%%%$$$/%%$$%$$$%%$$%%$$%%$$$$$$%%%', '04147721353', 1),
-(20, 'OGA1703', 'Josmar', 'Rodriguez', '$%%%$$$$$%%$%$$$$%%%$$$$$%%%$$$/%%$$%$$$%%$%%$$$%%$$%%$$%%%$$%$', '04120225089', 1);
 
 --
 -- Disparadores `choferes`
@@ -741,7 +735,8 @@ ALTER TABLE `bitacora`
 --
 ALTER TABLE `choferes`
   ADD PRIMARY KEY (`id_choferes`),
-  ADD UNIQUE KEY `cedula` (`cedula`);
+  ADD UNIQUE KEY `cedula` (`cedula`),
+  ADD UNIQUE KEY `placa` (`placa`);
 
 --
 -- Indices de la tabla `mantenimientos`
@@ -809,7 +804,7 @@ ALTER TABLE `vehiculos`
 -- AUTO_INCREMENT de la tabla `bitacora`
 --
 ALTER TABLE `bitacora`
-  MODIFY `id_bitacora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=315;
+  MODIFY `id_bitacora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=323;
 
 --
 -- AUTO_INCREMENT de la tabla `choferes`
@@ -832,6 +827,12 @@ ALTER TABLE `reparaciones`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `choferes`
+--
+ALTER TABLE `choferes`
+  ADD CONSTRAINT `fk_placa` FOREIGN KEY (`placa`) REFERENCES `vehiculos` (`placa`);
 
 --
 -- Filtros para la tabla `mantenimientos`

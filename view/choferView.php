@@ -4,6 +4,9 @@
 <head>
     <title><?php echo _NAMESYSTEM_; ?> | <?php if(!empty($action)){echo $action; } ?> <?php if(!empty($url)){echo $url;} ?></title>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -74,6 +77,7 @@
                                             <th>Telefono</th>
                                              <th><center>Acciones</center></th>
                                               <th></th>
+                                                  <th></th>
                                         </tr>
                                     </thead>
                           
@@ -88,21 +92,33 @@
                                             <td><?=$value['cedula']?></td>
                                             <td><?=$value['telefono']?></td>
                                   
-                                            <td> 
+                                            <td>
+                                                <div class="col-sm-7" style='text-align:right;'>
 
-                        <div class="col-sm-7" style='text-align:right;'>
+                                                            <a href="#" data-id="<?= $value['id_choferes'] ?>" class="btn btn-info btn-icon-split consultar" name="consultar" >
+                                                                <span class="icon text-white-50">
+                                                                    <i class="fas fa-search"></i>
+                                                                </span>
+                                                                <span class="text">Consultar</span>
+                                                            </a>
+                                                        </div>
 
-                 <a href="#" class="btn btn-warning btn-icon-split editarbtn" name="editar" id="'$value['placa']'" href="#" data-toggle="modal" data-target="#ModificarChoferModal">
-                                        <span class="icon text-white-50" >
-                                            <i class="fas fa-flag"></i>
-                                        </span>
-                                        <span class="text">Modificar</span>
-                                    </a>
+                                    </td>
+<td>
+                       <div class="col-sm-7" style='text-align:right;'>
+
+                                                            <a href="#" data-id="<?= $value['id_choferes'] ?>" class="btn btn-warning btn-icon-split editar" name="editar"  href="#" data-toggle="modal" data-target="#ModificarChoferModal">
+                                                                <span class="icon text-white-50">
+                                                                    <i class="fas fa-flag"></i>
+                                                                </span>
+                                                                <span class="text">Modificar</span>
+                                                            </a>
+                                                        </div>
                         </div>
                     </td>
                               <td> <div class="col-sm-7" style='text-align:right;'>
 
-                                  <a href="#" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#EliminarUsuarioModal">
+                                  <a href="#" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#EliminarChoferModal">
                                         <span class="icon text-white-50" >
                                             <i class="fas fa-trash"></i>
                                         </span>
@@ -187,11 +203,11 @@
         <label for="unidad"><b>Unidad</b></label>
         <select class="form-control select2" name="unidad" id="unidad">
             <option></option>
-            <?php foreach ($unidad as $vehiculo): ?>
-                <?php if (!empty($vehiculo['id_vehiculo'])): ?>
-            <option><?=$vehiculo['placa']?></option>        
-                <?php endif ?>
-            <?php endforeach ?>
+        <?php foreach ($vehiculo as $unidad) : ?>
+                                                <?php if (!empty($unidad['id_vehiculo'])) : ?>
+                                                    <option><?= $unidad['placa'] ?></option>
+                                                <?php endif ?>
+                                            <?php endforeach ?>
         </select>
         <span class="errorRol" style="color:red"></span>
     </div>
@@ -202,7 +218,7 @@
             </div>
             <div class="modal-footer">
                 <button class=" btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                <a class="EnviarUsuariosRegistrar btn btn-primary" href="#">Agregar</a>
+                <a class="EnviarChoferRegistrar btn btn-primary" href="#">Agregar</a>
             </div>
         </div>
     </div>

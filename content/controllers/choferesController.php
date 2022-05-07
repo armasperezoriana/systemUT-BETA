@@ -19,6 +19,7 @@
 			$this->url = $url;
 			$this->chofer = new choferesModel();
 			$this->vehiculo = new vehiculosModel();
+			
 		}
 
 		public function Consultar(){
@@ -32,6 +33,17 @@
 			$url = $this->url;
 			require_once("view/choferView.php");
 		}
+
+
+	public function Mostrar($param)
+    {
+        $chofer = $this->chofer->ObtenerOne($param);
+        http_response_code(200);
+        echo json_encode([
+            'data' => $choferes
+        ]);
+    }
+
 		
 		public function Registrar(){
 				if(!empty($_POST['nombre']) && !empty($_POST['apellido'])){
@@ -68,6 +80,43 @@
 		
 
 		public function Modificar(){
+			$method = $_SERVER['REQUEST_METHOD'];
+		if ($method != 'POST') {
+			http_response_code(404);
+			return false;
+		}
+			if(!empty($_POST['nombre']) && !empty($_POST['apellido'])){
+				$nombre=$_POST['nombre'];
+				$apellido=$_POST['apellido'];
+				$cedula=$_POST['cedula'];
+				$telefono = $_POST['telefono'];
+				$id_vehiculo = $_POST['id_vehiculo'];
+
+				$this->choferes->setNombre($nombre);
+				$this->choferes->setApellido($apellido);
+				$this->choferes->setCedula($cedula);
+				$this->choferes->setTelefono($telefono);
+				$this->choferes->setPlaca($placa);
+				//Agregar un Consultar para ver si existe Antes de Guardar o Rechazar;
+				$result = $this->choferes->ConsultarOne();
+				if($result['ejecucion']==true){
+					if(count($result)>1){
+						echo "3";
+					}else{
+						$execute = $this->choferes->Agregar();
+						//Codigo de bitacora sobre Agregar Usuario
+						if($execute['ejecucion']==true){
+							echo '1';
+						}else{
+							echo "2";
+						}
+					}
+				}else{
+					echo "2";
+				}
+			}
+
+
 		}
 
 		public function Eliminar(){

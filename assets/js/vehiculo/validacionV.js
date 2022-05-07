@@ -69,7 +69,7 @@ $(document).ready(function () {
 
 // Modificar Vehiculo
 
-$(".ModificarVehiculo").click(function() {
+$(".ModificarVehiculos").click(function() {
             var valido = validar(true);
                
             if (valido == true) {
@@ -77,11 +77,12 @@ $(".ModificarVehiculo").click(function() {
                 var id_vehiculo = $("#modificarVehiculo").find("#id_vehiculo").val();
                 console.log($("#modificarVehiculo"))
                 console.log($("#modificarVehiculo").find("#placa"));
+               
                 var modelo = $("#modificarVehiculo").find("#modelo").val();
-                console.log($("#modificarVehiculo").find("#funcionamiento").val());
-          
+
                 
                 var placa= $("#modificarVehiculo").find("#placa").val();
+                var funcionamiento = $("#modificarVehiculo").find("#funcionamiento").val();
             
                 // alert(pass);
                 swal.fire({

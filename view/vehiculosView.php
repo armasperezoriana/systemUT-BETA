@@ -110,8 +110,8 @@
 
                                                         <div class="col-sm-7" style='text-align:right;'>
 
-                                                            <a href="#" data-id="<?= $value['id_vehiculo'] ?>" class="btn btn-warning btn-icon-split editar" name="editar" >
-                                                                <span class="icon text-white-50">
+                                                          <a href="#" data-id="<?= $value['id_vehiculo'] ?>" class="btn btn-warning btn04-icon-split editar" name="editar">
+                                                            <span class="icon text-white-50">
                                                                     <i class="fas fa-flag"></i>
                                                                 </span>
                                                                 <span class="text">Modificar</span>
@@ -241,118 +241,80 @@
      </div>
 
 
+<!-- MODAL DE MODIFICAR-->
+              <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+    <style type="text/css">
+        .modal{
+            font-size:0.8em;
+        }
+    </style>
+    <div class="modal fade" id="ModificarVehiculoModal" tabindex="-1" role="dialog" aria-hidden="true" value="<? const id = $vehiculo->id_vehiculo;  ?>" style="padding:0;" >
+              <form id="modificarVehiculo" method="POST">
 
-
-
-       <!-- MODAL DE MODIFICAR-->
-
-        <div class="modal fade" id="ModificarVehiculoModal" tabindex="-1" role="dialog" aria-hidden="true" value="<? const id = $vehiculo->id;  ?>
-" style="padding:0;">
-            <form id="modificarVehiculo" method="POST">
                 <input type="hidden" id="id_vehiculo" name="id_vehiculo">
-                <div class="container">
-                    <div class="modal-dialog">
-                        <div class="" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header bg-primary" style="color:#FFF">
-                                    <h5 class="modal-title">
-                                        <center>Modificar Vehiculo</center>
-                                    </h5>
-                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">×</span>
-                                    </button>
-                                </div>
+        <div class="container">
+                <div class="modal-dialog">
+                    <div class="" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header bg-primary" style="color:#FFF">
+                                <h5 class="modal-title" id="exampleModalLabel">Modificar Vehiculo</h5>
+                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
 
-                                <div class="col-sm-7" style='text-align:right;'>
-                                    <span href="#" data-toggle="modal" data-target="ModificarVehiculoModal">
-
-                                    </span>
-                                </div>
-
-                                <div class="modal-body">
-                                    <div class="table-responsive">
-                                        <div class="card-body">
-                                            <div class="row" style='font-size:0.9em;'>
-                                                <div class="modal-body">
-                                                    <div class="row">
-                                                        <div class="form-group col-sm-12 col-md-6">
-
-                                                            <label for="nombre"><b>Nombre</b></label>
-                                                            <input type="text" class="form-control" name="nombre" id="nombre">
-                                                            <span class="errorNombre" style="color:red"></span>
-                                                        </div>
-                                                        <div class="form-group col-sm-12 col-md-6">
-                                                            <label for="apellido"><b>Apellido</b></label>
-                                                            <input type="text" class="form-control" name="apellido" id="apellido">
-                                                            <span class="errorApellido" style="color:red"></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="form-group col-sm-12 col-md-6">
-                                                            <label for="cedula"><b>Cedula</b></label>
-                                                            <input type="text" class="form-control" name="cedula" id="cedula">
-                                                            <span class="errorCedula" style="color:red"></span>
-                                                        </div>
-                                                        <div class="form-group col-sm-12 col-md-6">
-                                                            <label for="username"><b>Usuario</b></label>
-                                                            <input type="text" class="form-control" name="username" id="username">
-                                                            <span class="errorUsername" style="color:red"></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="form-group col-sm-12 col-md-12">
-                                                            <label for="rol"><b>Roles</b></label>
-                                                            <select style="width: 100%;" class="form-control select2" name="rol" id="rol">
-                                                                <option></option>
-                                                                <?php foreach ($roles as $rols) : ?>
-                                                                    <?php if (!empty($rols['id_rol'])) : ?>
-                                                                        <option><?= $rols['nombre_rol'] ?></option>
-                                                                    <?php endif ?>
-                                                                <?php endforeach ?>
-                                                            </select>
-                                                            <span class="errorRol" style="color:red"></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="form-group col-sm-12 col-md-6">
-                                                            <label for="pass1"><b>Contraseña</b></label>
-                                                            <input type="password" class="form-control" name="pass1" id="pass1" value="" placeholder="Ingresa tu clave">
-                                                            <span class="errorPass1" style="color:red"></span>
-
-                                                        </div>
-                                                        <br>
-                                                        <div class="row">
-                                                            <div class="form-group col-sm-12 col-md-6">
-                                                                <label for="pass2"><b> Repetir Contraseña</b></label>
-                                                                <input type="password" class="form-control" name="pass2" id="pass2" value="" placeholder="Ingresa tu clave">
-                                                                <span class="errorPass2" style="color:red"></span>
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="form-group col-sm-12 col-md-12">
-                                                            <label for="correo"><b>Correo</b></label>
-                                                            <input style="width: 100%;" type="email" class="form-control" name="correo" id="correo" value="<?= $value['correo'] ?>" placeholder="example@gmail.com">
-                                                            <span class="correo" style="color:red"></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button class=" btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                                                        <a class="ModificarVehiculo btn btn-primary" href="#">Guardar Datos</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                           <div class="modal-body">
+                                <div class="row">
+                                    <div class="form-group col-sm-12 col-md-6">
+                                        
+                                        <label for="´placa"><b>Placa</b></label>
+                                        <input type="text" class="form-control" name="placa" id="placa">
+                                        <span class="errorPlaca" style="color:red"></span>
                                     </div>
-                                </div>
+                                    <div class="form-group col-sm-12 col-md-6">
+                                        <label for="Modelo"><b>Modelo</b></label>
+                                        <select class="form-control select2" name="modelo" id="modelo" >
+                                                  <option value="">...</option>
+                                                <option value="Otro">Otro</option>
+                                                <option value="Encava">Encava</option>
+                                                <option value="BEDFORD">BEDFORD</option>
+                                                <option value="Caio">Caio</option>
+                                                <option value="Dodge">Dodge</option>
+                                                <option value="Envasa">Envasa</option>
+                                                <option value="Kia">Kia</option>
+                                                <option value="Iveco">Iveco</option>
+                                                <option value="Yutong">Yutong</option>
+                                            </select>
+                                         <span class="errorModelo" style="color:red"></span>
+                                    </div>
+                               
+                               <div class="form-group col-sm-12 col-md-6">
+                                        <label for="funcionamiento"><b>Funcionamiento</b></label>
+                                        <select class="form-control select2" name="funcionamiento" id="funcionamiento">
+                                                  <option value="">...</option>
+                                                <option value="1">Operativo</option>
+                                                <option value="2">Inoperativo</option>
+                                            </select>
+                                         <span class="errorModelo" style="color:red"></span>
+                                         
+                                    </div>
+                                    
+                            <div class="modal-footer">
+                                <button class=" btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                                <a class="ModificarVehiculos btn btn-primary" href="#">Guardar cambios</a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </form>
         </div>
+       </div>
+        </div>
+         </div>  
 
+
+     </div>
 
 
   <!-- MODAL DE CONSULTAR-->
