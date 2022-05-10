@@ -54,7 +54,7 @@
                                <span class="icon text-white-50">
                                             <i class="fas fa-check"></i>
                                         </span>
-                                   <a href="#" class="btn btn-success btn-icon-split" data-target="#AgregarVehiculosModal" data-toggle="modal" data-target="#AgregarVehiculosModal">
+                                   <a href="#" class="btn btn-success btn-icon-split" data-target="#AgregarChoferModal" data-toggle="modal" >
                                         <span class="icon text-white-50">
                                             <i class="fas fa-check"></i>
                                         </span>
@@ -95,7 +95,7 @@
                                             <td>
                                                 <div class="col-sm-7" style='text-align:right;'>
 
-                                                            <a href="#" data-id="<?= $value['id_choferes'] ?>" class="btn btn-info btn-icon-split consultar" name="consultar" >
+                                                            <a href="#" data-id="<?= $value['id_choferes'] ?>" class="btn btn-info btn-icon-split consultar" name="consultar" data-target="ConsultarChoferModal"  data-toggle="modal">
                                                                 <span class="icon text-white-50">
                                                                     <i class="fas fa-search"></i>
                                                                 </span>
@@ -107,7 +107,7 @@
 <td>
                        <div class="col-sm-7" style='text-align:right;'>
 
-                                                            <a href="#" data-id="<?= $value['id_choferes'] ?>" class="btn btn-warning btn-icon-split editar" name="editar"  href="#" data-toggle="modal" data-target="#ModificarChoferModal">
+                                                            <a href="#" data-id="<?= $value['id_choferes'] ?>" class="btn btn-warning btn-icon-split editar" name="editar" data-toggle="modal" data-target="#ModificarChoferModal">
                                                                 <span class="icon text-white-50">
                                                                     <i class="fas fa-flag"></i>
                                                                 </span>
@@ -116,19 +116,29 @@
                                                         </div>
                         </div>
                     </td>
-                              <td> <div class="col-sm-7" style='text-align:right;'>
-
-                                  <a href="#" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#EliminarChoferModal">
-                                        <span class="icon text-white-50" >
-                                            <i class="fas fa-trash"></i>
-                                        </span>
-                                        <span class="text">Eliminar</span>
-                                    </a>
-                        </div></td>
-                                        </tr>
+                              <td><div class="col-sm-7" style='text-align:right;'>
+                                                            <?php if ($value['status'] == 1) { ?>
+                                                                <a href="#" data-id="<?= $value['id_choferes'] ?>" class="btn btn-danger btn-icon-split inhabilitar" data-toggle="modal" data-target="">
+                                                                    <span class="icon text-white-50">
+                                                                        <i class="fas fa-trash"></i>
+                                                                    </span>
+                                                                    <span class="text">Eliminar</span>
+                                                                </a>
+                                                            <?php } else { ?>
+                                                                <a href="#" data-id="<?= $value['id_choferes'] ?>" class="btn btn-outline-info btn-icon-split habilitar" data-toggle="modal" data-target="">
+                                                                    <span class="icon text-info-50">
+                                                                        <i class="fas fa-trash-alt"></i>
+                                                                    </span>
+                                                                    <span class="text">Habilitar</span>
+                                                                </a>
+                                                            <?php } ?>
+                                                        </div>
+                                                    </td>
+                                                </tr>
 
                                             <?php endif ?>
                                         <?php endforeach ?>
+
                                         
                                     </tbody>
                                 </table>
@@ -161,7 +171,7 @@
             font-size:0.8em;
         }
     </style>
-    <div class="modal fade" id="AgregarVehiculosModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding:0;">
+    <div class="modal fade" id="AgregarChoferModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding:0;">
         <div class="container">
                 <div class="modal-dialog">
                     <div class="" role="document">
@@ -195,20 +205,20 @@
     <div class="form-group col-sm-12 col-md-6">
         <label for="username"><b>Telefono</b></label>
         <input type="text" class="form-control" name="username" id="telefono">
-        <span class="errorUsername" style="color:red"></span>
+        <span class="errorTelefono" style="color:red"></span>
     </div>
 </div>
 <div class="row">
     <div class="form-group col-sm-12 col-md-12">
         <label for="unidad"><b>Unidad</b></label>
-        <select class="form-control select2" name="unidad" id="unidad">
-            <option></option>
-        <?php foreach ($vehiculo as $unidad) : ?>
+    <select class="form-control select2" name="placa" id="placa">
+                                            <option></option>
+                                            <?php foreach ($vehiculo as $unidad) : ?>
                                                 <?php if (!empty($unidad['id_vehiculo'])) : ?>
                                                     <option><?= $unidad['placa'] ?></option>
                                                 <?php endif ?>
                                             <?php endforeach ?>
-        </select>
+                                        </select>
         <span class="errorRol" style="color:red"></span>
     </div>
                                 </div>
@@ -284,6 +294,86 @@
         <label for="unidad"><b>Unidad</b></label>
         <select class="form-control select2" name="unidad" id="unidad">
             <option></option>
+            <?php foreach ($placa as $vehiculo): ?>
+                <?php if (!empty($vehiculo['id_vehiculo'])): ?>
+            <option><?=$vehiculo['placa']?></option>        
+                <?php endif ?>
+            <?php endforeach ?>
+        </select>
+        <span class="errorRol" style="color:red"></span>
+    </div>
+                                </div>
+                              
+                    
+
+            </div>
+            <div class="modal-footer">
+                <button class=" btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                <a class="EnviarChoferRegistrar btn btn-primary" href="#">Agregar</a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>  
+
+
+     </div>
+
+<!-- MODAL DE CONSULTAR-->
+ 
+             <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+    <style type="text/css">
+        .modal{
+            font-size:0.8em;
+        }
+    </style>
+    <div class="modal fade" id="ConsultarChoferModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding:0;">
+        <div class="container">
+                <div class="modal-dialog">
+                    <div class="" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header bg-primary" style="color:#FFF">
+                                <h5 class="modal-title" >Consultar Chofer</h5>
+                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+
+<div class="modal-body">
+<div class="row">
+    <div class="form-group col-sm-12 col-md-6">
+        <label for="nombre"><b>Nombre</b></label>
+        <input type="text" class="form-control-plaintext  disabled" name="nombre" id="nombre">
+        <span class="errorNombre" style="color:red"></span>
+    </div>
+    <div class="form-group col-sm-12 col-md-6">
+        <label for="apellido"><b>Apellido</b></label>
+        <input type="text" class="form-control-plaintext  disabled" name="apellido" id="apellido">
+        <span class="errorApellido" style="color:red"></span>
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-sm-12 col-md-6">
+        <label for="cedula"><b>Cedula</b></label>
+        <input type="text" class="form-control-plaintext  disabled" name="cedula" id="cedula">
+        <span class="errorCedula" style="color:red"></span>
+    </div>
+    <div class="form-group col-sm-12 col-md-6">
+        <label for="username"><b>Telefono</b></label>
+        <input type="text" class="form-control-plaintext  disabled" name="username" id="telefono">
+        <span class="errorUsername" style="color:red"></span>
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-sm-12 col-md-12">
+        <label for="unidad"><b>Unidad</b></label>
+        <select class="form-control select2"  class="form-control-plaintext  disabled" name="unidad" id="unidad">
+            <option></option>
             <?php foreach ($unidad as $vehiculo): ?>
                 <?php if (!empty($vehiculo['id_vehiculo'])): ?>
             <option><?=$vehiculo['placa']?></option>        
@@ -299,7 +389,6 @@
             </div>
             <div class="modal-footer">
                 <button class=" btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                <a class="EnviarUsuariosRegistrar btn btn-primary" href="#">Agregar</a>
             </div>
         </div>
     </div>
@@ -312,6 +401,7 @@
 
      </div>
 
+  
   
 
  <!-- MODULo de AYUDA -->
@@ -375,7 +465,7 @@
 
 </body>
 
-<script type="text/javascript" src="'../../assets/js/chofer/validar.js"></script
+<script type="text/javascript" src="'../../assets/js/chofer/validarC.js"></script
  
 
 </script> 

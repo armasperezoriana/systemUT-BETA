@@ -78,12 +78,15 @@ public function Mostrar($param)
 			http_response_code(404);
 			return false;
 		}
-
+		$id_vehiculo = $_POST['id_vehiculo'];
+		
 		if (!empty($_POST['placa']) && !empty($_POST['modelo'])) {
+			$id_vehiculo = $_POST['id_vehiculo'];
 			$placa = $_POST['placa'];
 			$modelo = $_POST['modelo'];
 			$funcionamiento = $_POST['funcionamiento'];
 
+			$this->vehiculo->setId($id_vehiculo);
 			$this->vehiculo->setPlaca($placa);
 			$this->vehiculo->setModelo($modelo);
 			$this->vehiculo->setFuncionamiento($funcionamiento);

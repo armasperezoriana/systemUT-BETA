@@ -106,15 +106,19 @@
 
 
                                                     </td>
-                                                    <td>
+                                                     <td>
 
                                                         <div class="col-sm-7" style='text-align:right;'>
 
-                                                          <a href="#" data-id="<?= $value['id_vehiculo'] ?>" class="btn btn-warning btn04-icon-split editar" name="editar">
-                                                            <span class="icon text-white-50">
+                                                              <a href="#" data-id="<?= $value['id_vehiculo'] ?>" class="btn btn-warning btn-icon-split editarbtn" name="editar">
+
                                                                     <i class="fas fa-flag"></i>
                                                                 </span>
                                                                 <span class="text">Modificar</span>
+                                                            </a>
+                                                        </div>
+
+
                                                             </a>
                                                         </div>
 
@@ -192,12 +196,12 @@
                                 <div class="row">
                                     <div class="form-group col-sm-12 col-md-6">
                                         <label for="placa"><b>Placa</b></label>
-                                        <input type="text" class="form-control" name="placa" id="placa">
+                                        <input type="text" class="form-control" name="placa" id="placaM">
                                         <span class="errorPlaca" style="color:red"></span>
                                     </div>
                                     <div class="form-group col-sm-12 col-md-6">
                                         <label for="modelo"><b>Modelo</b></label>
-                                        <select class="form-control select2" name="modelo" id="modelo">
+                                        <select class="form-control select2" name="modelo" id="modeloM">
                                                   <option value="">...</option>
                                                 <option value="Otro">Otro</option>
                                                 <option value="Encava">Encava</option>
@@ -214,7 +218,7 @@
                                
                                <div class="form-group col-sm-12 col-md-6">
                                         <label for="funcionamiento"><b>Funcionamiento</b></label>
-                                        <select class="form-control select2" name="funcionamiento" id="funcionamiento">
+                                        <select class="form-control select2" name="funcionamiento" id="funcionamientoM">
                                                   <option value="">...</option>
                                                 <option value="Operativo">Operativo</option>
                                                 <option value="Inoperativo">Inoperativo</option>
@@ -242,15 +246,9 @@
 
 
 <!-- MODAL DE MODIFICAR-->
-              <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-    <style type="text/css">
-        .modal{
-            font-size:0.8em;
-        }
-    </style>
-    <div class="modal fade" id="ModificarVehiculoModal" tabindex="-1" role="dialog" aria-hidden="true" value="<? const id = $vehiculo->id_vehiculo;  ?>" style="padding:0;" >
+   <div class="modal fade" id="ModificarVehiculoModal" tabindex="-1" role="dialog" aria-hidden="true" style="padding:0;" data-id="<?= $value['id_vehiculo'] ?>">
+
+
               <form id="modificarVehiculo" method="POST">
 
                 <input type="hidden" id="id_vehiculo" name="id_vehiculo">
@@ -259,23 +257,30 @@
                     <div class="" role="document">
                         <div class="modal-content">
                             <div class="modal-header bg-primary" style="color:#FFF">
-                                <h5 class="modal-title" id="exampleModalLabel">Modificar Vehiculo</h5>
+                                <h5 class="modal-title">Modificar Vehiculo</h5>
                                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
                             </div>
 
+                        <div class="col-sm-7" style='text-align:right;'>
+                                    <span href="#" data-toggle="modal" data-target="ModificarVehiculoModal">
+
+                                    </span>
+                                </div>
+
                            <div class="modal-body">
+                            <div class="table-responsive">
                                 <div class="row">
                                     <div class="form-group col-sm-12 col-md-6">
                                         
-                                        <label for="´placa"><b>Placa</b></label>
-                                        <input type="text" class="form-control" name="placa" id="placa">
+                                        <label for="placa"><b>Placa</b></label>
+                                        <input type="text" class="form-control" name="placa" id="placaM">
                                         <span class="errorPlaca" style="color:red"></span>
                                     </div>
                                     <div class="form-group col-sm-12 col-md-6">
                                         <label for="Modelo"><b>Modelo</b></label>
-                                        <select class="form-control select2" name="modelo" id="modelo" >
+                                        <select class="form-control select2" name="modelo" id="modeloM" >
                                                   <option value="">...</option>
                                                 <option value="Otro">Otro</option>
                                                 <option value="Encava">Encava</option>
@@ -292,10 +297,10 @@
                                
                                <div class="form-group col-sm-12 col-md-6">
                                         <label for="funcionamiento"><b>Funcionamiento</b></label>
-                                        <select class="form-control select2" name="funcionamiento" id="funcionamiento">
+                                        <select class="form-control select2" name="funcionamiento" id="funcionamientoM">
                                                   <option value="">...</option>
-                                                <option value="1">Operativo</option>
-                                                <option value="2">Inoperativo</option>
+                                                <option value="Operativo">Operativo</option>
+                                                <option value="Inoperativo">Inoperativo</option>
                                             </select>
                                          <span class="errorModelo" style="color:red"></span>
                                          

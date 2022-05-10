@@ -71,22 +71,21 @@ $(document).ready(function () {
 
 $(".ModificarVehiculos").click(function() {
             var valido = validar(true);
-               
+              
             if (valido == true) {
 
                 var id_vehiculo = $("#modificarVehiculo").find("#id_vehiculo").val();
                 console.log($("#modificarVehiculo"))
-                console.log($("#modificarVehiculo").find("#placa"));
-               
-                var modelo = $("#modificarVehiculo").find("#modelo").val();
 
-                
-                var placa= $("#modificarVehiculo").find("#placa").val();
-                var funcionamiento = $("#modificarVehiculo").find("#funcionamiento").val();
+                var modelo = $("#modificarVehiculo").find("#modeloM").val();
+
+                var placa= $("#modificarVehiculo").find("#placaM").val();
+                var funcionamiento = $("#modificarVehiculo").find("#funcionamientoM").val();
             
-                // alert(pass);
+                // alert(pass)
+
                 swal.fire({
-                    title: "¿Desea guardar los datos del vehiculo ingresados?",
+                    title: "¿Desea guardar los datos del vehiculo que han sido modificados?",
                     text: "Estos datos serán guardados.",
                     type: "question",
                     showCancelButton: true,
@@ -101,9 +100,9 @@ $(".ModificarVehiculos").click(function() {
                             type: 'POST',
                             data: {
                                 id_vehiculo: id_vehiculo,
-                                placa: placa,
-                                modelo: modelo,
-                                funcionamiento: funcionamiento,
+                                placaM: placa,
+                                modeloM: modelo,
+                                funcionamientoM: funcionamiento,
                                 
                             },
                             success: function(respuesta) {
@@ -198,7 +197,7 @@ function validar(modificar = false) {
         form = "#AgregarVehiculosModal";
     }
     else {
-        form = "#ModificarvehiculoModal";
+        form = "#ModificarVehiculoModal";
     }
     var placa = $(form).find("#placa").val();
     var rplaca = false;
@@ -231,6 +230,35 @@ function validar(modificar = false) {
     }
     return validado;
 }
+
+ $('.editar').click(function(e){
+            e.preventDefault();
+            mostrar($(this).attr('data-id'), "#modificarVehiculo", "#ModificarVehiculoModal");
+        })
+        $('.consultar').click(function(e){
+            e.preventDefault();
+            mostrar($(this).attr('data-id'), "#consultarUsuario", "#ConsultarUsuarioModal");
+        })
+
+  const mostrar = (id, formulario, modal) => {
+        $.ajax({
+            type: "POST",
+            url: "Vehiculos/Mostrar/"+id,
+            success: function (response) {
+                let json = JSON.parse(response);
+                let vehiculo = json.data;
+                $(formulario).find("#id_vehiculo").val(vehiculo.id_vehiculo);
+                $(formulario).find("#placaM").val(vehiculo.placa);
+                $(formulario).find("#modeloM").val(vehiculo.modelo);
+                $(formulario).find("#funcionamientoM").val(vehiculo.funcionamiento);
+                $(modal).modal('show');
+            },
+            error: function (response) {
+                console.log(response.getAllResponseHeaders())
+            }
+        });
+    }
+
 
 const inhabilitar = (id) => {
     $.ajax({

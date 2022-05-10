@@ -43,7 +43,7 @@
 
                     <div class="container-fluid">
 
-                        <!-- LEYENDA DEL erred.ñllMODULO -->
+                        <!-- LEYENDA DEL el MODULO -->
                         <p class="mb-4">En este módulo podrá visualizar los usuarios que están registrados en el sistema a su vez registrar, eliminar y modificar <a target="_blank">
                             </a></p>
 
