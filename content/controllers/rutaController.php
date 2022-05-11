@@ -30,8 +30,37 @@
 			require_once("view/rutasView.php");
 		}
 		
-		public function Agregar(){
+		public function Registrar(){
+
+			if (!empty($_POST['placa']) && !empty($_POST['nombre_ruta'])) {
+			$nombre_ruta = $_POST['nombre_ruta'];
+			$direccion = $_POST['direccion'];
+			$unidad = $_POST['placa'];
+			
+			$this->ruta->setNombre_ruta($nombre_ruta);
+			$this->ruta->setPlaca($placa);
+			$this->ruta->setDireccion($direccion);
+
+
+			$result = $this->ruta->ConsultarOne();
+			if ($result['ejecucion'] == true) {
+				if (count($result) > 1) {
+					echo "3";
+				} else {
+					$execute = $this->ruta->Agregar();
+					//Codigo de bitacora sobre Agregar Usuario
+					if ($execute['ejecucion'] == true) {
+						echo '1';
+					} else {
+						echo "2";
+					}
+				}
+			} else {
+				echo "2";
+			}
 		}
+	}
+
 
 		public function Modificar(){
 		}

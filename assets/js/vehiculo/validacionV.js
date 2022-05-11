@@ -71,7 +71,7 @@ $(document).ready(function () {
 
 $(".ModificarVehiculos").click(function() {
             var valido = validar(true);
-              
+              console.log("funciono");
             if (valido == true) {
 
                 var id_vehiculo = $("#modificarVehiculo").find("#id_vehiculo").val();
@@ -100,9 +100,9 @@ $(".ModificarVehiculos").click(function() {
                             type: 'POST',
                             data: {
                                 id_vehiculo: id_vehiculo,
-                                placaM: placa,
-                                modeloM: modelo,
-                                funcionamientoM: funcionamiento,
+                                placa: placa, 
+                                modelo: modelo,
+                                funcionamiento: funcionamiento,
                                 
                             },
                             success: function(respuesta) {
@@ -232,12 +232,13 @@ function validar(modificar = false) {
 }
 
  $('.editar').click(function(e){
+    console.log("1");
             e.preventDefault();
             mostrar($(this).attr('data-id'), "#modificarVehiculo", "#ModificarVehiculoModal");
         })
         $('.consultar').click(function(e){
             e.preventDefault();
-            mostrar($(this).attr('data-id'), "#consultarUsuario", "#ConsultarUsuarioModal");
+            mostrar($(this).attr('data-id'), "#consultarVehiculo", "#ConsultarVehiculoModal");
         })
 
   const mostrar = (id, formulario, modal) => {

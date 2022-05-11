@@ -96,7 +96,7 @@
 
                     <div class="col-sm-7" style='text-align:right;'>
 
-                                                            <a href="#" data-id="<?= $value['id_vehiculo'] ?>" class="btn btn-info btn-icon-split consultar" name="consultar" >
+                                                            <a  data-id="<?= $value['id_vehiculo'] ?>" class="btn btn-info btn-icon-split consultar" name="consultar" >
                                                                 <span class="icon text-white-50">
                                                                     <i class="fas fa-search"></i>
                                                                 </span>
@@ -110,7 +110,7 @@
 
                                                         <div class="col-sm-7" style='text-align:right;'>
 
-                                                              <a href="#" data-id="<?= $value['id_vehiculo'] ?>" class="btn btn-warning btn-icon-split editarbtn" name="editar">
+                                                              <a  data-id="<?= $value['id_vehiculo'] ?>" class="btn btn-warning btn-icon-split editar" name="editar">
 
                                                                     <i class="fas fa-flag"></i>
                                                                 </span>
@@ -343,7 +343,7 @@
                                 </div>
 
                                 <div class="col-sm-7" style='text-align:right;'>
-                                    <span href="#" data-toggle="modal" data-target="ModificarVehiculoModal">
+                                    <span href="#" data-toggle="modal" data-target="ConsultarVehiculoModal">
 
                                     </span>
                                 </div>
@@ -354,12 +354,12 @@
                                             <?php if (($value['id_vehiculo'])): ?>
                                         
                                         <label for="´placa"><b>Placa</b></label>
-                                        <input type="text" class="form-control" name="placa" id="placa" value="<?=$value['placa']?>">
+                                        <input type="text" class="form-control" name="placa" id="placaM" >
                                         <span class="errorPlaca" style="color:red"></span>
                                     </div>
                                     <div class="form-group col-sm-12 col-md-6">
                                         <label for="Modelo"><b>Modelo</b></label>
-                                        <select class="form-control select2" name="modelo" id="modelo" >
+                                        <select class="form-control select2" name="modelo" id="modeloM" >
                                                   <option value="">...</option>
                                                 <option value="Otro">Otro</option>
                                                 <option value="Encava">Encava</option>
@@ -376,7 +376,7 @@
                                
                                <div class="form-group col-sm-12 col-md-6">
                                         <label for="funcionamiento"><b>Funcionamiento</b></label>
-                                        <select class="form-control select2" name="funcionamiento" id="funcionamiento">
+                                        <select class="form-control select2" name="funcionamiento" id="funcionamientoM">
                                                   <option value="">...</option>
                                                 <option value="1">Operativo</option>
                                                 <option value="2">Inoperativo</option>

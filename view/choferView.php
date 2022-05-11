@@ -107,7 +107,7 @@
 <td>
                        <div class="col-sm-7" style='text-align:right;'>
 
-                                                            <a href="#" data-id="<?= $value['id_choferes'] ?>" class="btn btn-warning btn-icon-split editar" name="editar" data-toggle="modal" data-target="#ModificarChoferModal">
+                                                            <a href="#" data-id="<?= $value['id_choferes'] ?>" class="btn btn-warning btn-icon-split editar" name="editar">
                                                                 <span class="icon text-white-50">
                                                                     <i class="fas fa-flag"></i>
                                                                 </span>
@@ -203,29 +203,26 @@
         <span class="errorCedula" style="color:red"></span>
     </div>
     <div class="form-group col-sm-12 col-md-6">
-        <label for="username"><b>Telefono</b></label>
-        <input type="text" class="form-control" name="username" id="telefono">
+        <label for="telefono"><b>Telefono</b></label>
+        <input type="text" class="form-control" name="telefono" id="telefono">
         <span class="errorTelefono" style="color:red"></span>
     </div>
 </div>
-<div class="row">
-    <div class="form-group col-sm-12 col-md-12">
-        <label for="unidad"><b>Unidad</b></label>
-    <select class="form-control select2" name="placa" id="placa">
+ <div class="row">
+                                    <div class="form-group col-sm-12 col-md-6">
+                                      <label for="rol"><b>Unidad asignada</b></label>
+                                        <select class="form-control select2" name="placa" id="placa">
                                             <option></option>
-                                            <?php foreach ($vehiculo as $unidad) : ?>
+                                            <?php foreach ($vehiculos as $unidad) : ?>
                                                 <?php if (!empty($unidad['id_vehiculo'])) : ?>
                                                     <option><?= $unidad['placa'] ?></option>
                                                 <?php endif ?>
                                             <?php endforeach ?>
                                         </select>
-        <span class="errorRol" style="color:red"></span>
-    </div>
-                                </div>
-                              
-                    
+                                        <span class="errorPlaca" style="color:red"></span>
+                                    </div>
 
-            </div>
+    
             <div class="modal-footer">
                 <button class=" btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
                 <a class="EnviarChoferRegistrar btn btn-primary" href="#">Agregar</a>
@@ -285,14 +282,14 @@
     </div>
     <div class="form-group col-sm-12 col-md-6">
         <label for="username"><b>Telefono</b></label>
-        <input type="text" class="form-control" name="username" id="telefono">
+        <input type="text" class="form-control" name="telefono" id="telefono">
         <span class="errorUsername" style="color:red"></span>
     </div>
 </div>
 <div class="row">
     <div class="form-group col-sm-12 col-md-12">
         <label for="unidad"><b>Unidad</b></label>
-        <select class="form-control select2" name="unidad" id="unidad">
+        <select class="form-control select2" name="placa" id="placa">
             <option></option>
             <?php foreach ($placa as $vehiculo): ?>
                 <?php if (!empty($vehiculo['id_vehiculo'])): ?>

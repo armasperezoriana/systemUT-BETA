@@ -3,7 +3,10 @@
 
 <head>
     <title><?php echo _NAMESYSTEM_; ?> | <?php if(!empty($action)){echo $action; } ?> <?php if(!empty($url)){echo $url;} ?></title>
-
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
 </head>
 
 <body id="page-top">
@@ -52,7 +55,7 @@
                                <span class="icon text-white-50">
                                             <i class="fas fa-check"></i>
                                         </span>
-                                   <a href="#" class="btn btn-success btn-icon-split" data-target="#AgregarVehiculosModal" data-toggle="modal" data-target="#AgregarVehiculosModal">
+                                   <a href="#" class="btn btn-success btn-icon-split" data-target="#AgregarRutaModal" data-toggle="modal" data-target="#">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-check"></i>
                                         </span>
@@ -74,6 +77,7 @@
                                             <th>Hora de Salida</th>
                                              <th><center>Accion</center></th>
                                               <th></th>
+                                               <th></th>
                                         </tr>
                                     </thead>
                           
@@ -88,16 +92,32 @@
                                             <td><?=$value['hora_salida']?></td>
                                             <td> 
 
-                        <div class="col-sm-7" style='text-align:right;'>
+                         <div class="col-sm-7" style='text-align:right;'>
 
-                 <a href="#" class="btn btn-warning btn-icon-split editarbtn" name="editar" id="'$value['id_vehiculo']'" href="#" data-toggle="modal" data-target="#ModificarvehiculoModal">
-                                        <span class="icon text-white-50" >
-                                            <i class="fas fa-flag"></i>
-                                        </span>
-                                        <span class="text">Modificar</span>
-                                    </a>
-                        </div>
-                    </td>
+                                                            <a href="#"  data-id="<?= $value['id_ruta'] ?>" class="btn btn-info btn-icon-split consultar" name="consultar" >
+                                                                <span class="icon text-white-50">
+                                                                    <i class="fas fa-search"></i>
+                                                                </span>
+                                                                <span class="text">Consultar</span>
+                                                            </a>
+                                                        </div>
+
+
+                                                    </td>
+                                                    <td>
+
+                                                        <div class="col-sm-7" style='text-align:right;'>
+
+                                                            <a href="#" data-id="<?= $value['id_ruta'] ?>" class="btn btn-warning btn-icon-split editar" name="editar" >
+                                                                <span class="icon text-white-50">
+                                                                    <i class="fas fa-flag"></i>
+                                                                </span>
+                                                                <span class="text">Modificar</span>
+                                                            </a>
+                                                        </div>
+
+
+                                                    </td>
                               <td> <div class="col-sm-7" style='text-align:right;'>
 
                                   <a href="#" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#EliminarUsuarioModal">
@@ -143,7 +163,7 @@
             font-size:0.8em;
         }
     </style>
-    <div class="modal fade" id="AgregarVehiculosModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding:0;">
+    <div class="modal fade" id="AgregarRutaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding:0;">
         <div class="container">
                 <div class="modal-dialog">
                     <div class="" role="document">
@@ -160,7 +180,7 @@
                                    <div class="form-group col-sm-12 col-md-6">
                                     <div class="form-group col-sm-12 col-md-12">
                                         <label for="rol"><b>Unidad</b></label>
-                                        <select class="form-control select2" name="placa" id="rol">
+                                        <select class="form-control select2" name="placa" id="placa">
                                             <option></option>
                                             <?php foreach ($vehiculo as $unidad) : ?>
                                                 <?php if (!empty($unidad['id_vehiculo'])) : ?>
@@ -168,29 +188,29 @@
                                                 <?php endif ?>
                                             <?php endforeach ?>
                                         </select>
-                                        <span class="errorUnidad" style="color:red"></span>
+                                        <span class="errorPlaca" style="color:red"></span>
                                     </div>
                                     </div>
                                     <div class="form-group col-sm-12 col-md-6">
                                         <label for="Modelo"><b>Dirección</b></label>
-                                          <input type="text" class="form-control" name="direccion" id="direccion">
-                                        <span class="errorModelo" style="color:red"></span>
+                                          <input type="text" class="form-control" name="direccion_ruta" id="direccion_ruta">
+                                        <span class="errorDireccion" style="color:red"></span>
                                     </div>
                                 </div>
                                     
                                         <label for="nombrer"><b>Nombre de la Ruta</b></label>
-                                         <input type="text" class="form-control" name="nombrer" id="nombrer">
-                                        <span class="errorNombreR" style="color:red"></span>
+                                         <input type="text" class="form-control" name="nombrer" id="nombre_ruta">
+                                        <span class="errorNombre" style="color:red"></span>
                                          <div class="row">
                                     <div class="form-group col-sm-12 col-md-6">
                                         <label for="hora"><b>Hora</b></label>
-                                       <input type="time" class="form-control" name="hora" id="hora">
+                                       <input type="time" class="form-control" name="hora_salida" id="hora_salida">
                                     </div>
                                    </div> 
                                    <br>  <br>
                             <div class="modal-footer">
                                 <button class=" btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                                <a class="EnviarUsuariosRegistrar btn btn-primary" href="#">Agregar</a>
+                                <a class="EnviarRutaRegistrar btn btn-primary" href="#">Agregar</a>
                             </div>
                         </div>
                     </div>
@@ -230,7 +250,7 @@
                                    <div class="form-group col-sm-12 col-md-6">
                                     <div class="form-group col-sm-12 col-md-12">
                                         <label for="rol"><b>Unidad</b></label>
-                                        <select class="form-control select2" name="placa" id="rol">
+                                        <select class="form-control select2" name="placa" id="placa">
                                             <option></option>
                                             <?php foreach ($vehiculo as $unidad) : ?>
                                                 <?php if (!empty($unidad['id_vehiculo'])) : ?>
@@ -249,12 +269,13 @@
                                 </div>
                                     
                                         <label for="nombrer"><b>Nombre de la Ruta</b></label>
-                                         <input type="text" class="form-control" name="nombrer" id="nombrer">
+                                         <input type="text" class="form-control" name="nombrer" id="nombre_ruta
+                                         ">
                                         <span class="errorNombreR" style="color:red"></span>
                                          <div class="row">
                                     <div class="form-group col-sm-12 col-md-6">
                                         <label for="hora"><b>Hora</b></label>
-                                       <input type="time" class="form-control" name="hora" id="hora">
+                                       <input type="time" class="form-control" name="hora" id="hora_salida">
                                     </div>
                                    </div> 
                                    <br>  <br>
@@ -339,8 +360,8 @@
  <!-- MODULo de ELIMINAR -->
 
 </body>
-<!-- 
-<script type="text/javascript" src="'../../assets/js/usuario/validacion.js"></script> -->
+
+<script type="text/javascript" src="'../../assets/js/ruta/validarR.js"></script> 
  
 
 </script> 

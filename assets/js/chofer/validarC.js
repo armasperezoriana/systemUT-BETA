@@ -2,12 +2,13 @@
 
         $(".EnviarChoferRegistrar").click(function() {
             var valido = validar();
+           
             if (valido == true) {
 
                 var nombre = $("#AgregarVehiculosModal").find("#nombre").val();                
                 var apellido = $("#AgregarVehiculosModal").find("#apellido").val();
                 var cedula =$("#AgregarVehiculosModal").find("#cedula").val();;
-                var unidad = $("#AgregarVehiculosModal").find("#unidad").val();
+                var placa = $("#AgregarVehiculosModal").find("#placa").val();
                 var telefono = $("#AgregarVehiculosModal").find("#telefono").val();
              
                 // alert(pass);
@@ -29,7 +30,7 @@
                                 nombre: nombre,
                                 apellido: apellido,
                                 cedula: cedula,
-                                unidad: unidad,
+                                placa: placa,
                                 telefono: telefono,
                     
                             },
@@ -40,7 +41,7 @@
                                         type: 'success',
                                         title: 'Registro del conductor guardado exitosamente',
                                     }).then((isConfirm) => {
-                                        location.href = './Usuarios';
+                                        location.href = './Chofer';
                                     });
                                 }
                                 if (respuesta == "2") {
@@ -71,12 +72,12 @@
             }
 
         });
-        $(".ModificarChofer").click(function() {
+         $(".ModificarChofer").click(function() {
             var valido = validar(true);
                
             if (valido == true) {
 
-                var id_usuario = $("#modificarChofer").find("#id_usuario").val();
+                var id_usuario = $("#modificarChofer").find("#id_choferes").val();
                 console.log($("#modificarChofer"))
                 console.log($("#modificarChofer").find("#nombre"));
                 var nombre = $("#modificarChofer").find("#nombre").val();
@@ -86,7 +87,7 @@
                 var apellido = $("#modificarChofer").find("#apellido").val();
                 var cedula =$("#modificarChofer").find("#cedula").val();;
                 var telefono = $("#modificarChofer").find("#telefono").val();
-                var unidad = $("#modficarChofer").find("#unidad").val();
+                var placa = $("#modficarChofer").find("#placa").val();
          
                 // alert(pass);
                 swal.fire({
@@ -104,14 +105,13 @@
                             url: './Chofer/Modificar',
                             type: 'POST',
                             data: {
-                                id_usuario: id_usuario,
+                                id_choferes: id_choferes,
                                 nombre: nombre,
                                 apellido: apellido,
                                 cedula: cedula,
-                                username: username,
-                                rol: rol,
-                                pass: pass,
-                                correo: correo,
+                                telefono: telefono,
+                                placa: placa,
+                               
                             },
                             success: function(respuesta) {
                                 // alert(respuesta);
@@ -228,8 +228,8 @@
         var telefono = $(form).find("#telefono").val();
         var rtelefono = false;
 
-        var unidad = $(form).find("#unidad").val();
-        var runidad = false;
+        var placa = $(form).find("#placa").val();
+        var rPlaca = false;
 
     
         if (nombre == "") {
@@ -261,6 +261,13 @@
             $(".errorTelefono").html("");
             rtelefono = true;
         }
+        if (placa == "") {
+            rplaca = false;
+            $(".errorPlaca").html("Debe seleccionar su placa");
+        } else {
+            $(".errorPlaca").html("");
+            rplaca = true;
+        }
       }   
     
 
@@ -275,7 +282,7 @@
                 $(formulario).find("#nombre").val(chofer.nombre);
                 $(formulario).find("#apellido").val(chofer.apellido);
                 $(formulario).find("#telefono").val(chofer.telefono);
-                $(formulario).find("#unidad").val(chofer.unidad);
+                $(formulario).find("#placa").val(chofer.placa);
 
                 $(modal).modal('show');
             },
@@ -327,3 +334,5 @@
         });
     }
 
+
+       

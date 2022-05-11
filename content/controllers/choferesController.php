@@ -31,6 +31,7 @@
 			$chofer = $this->chofer->Consultar();
 			
 			$url = $this->url;
+			//var_dump($vehiculos);
 			require_once("view/choferView.php");
 		}
 
@@ -51,13 +52,14 @@
 				$apellido=$_POST['apellido'];
 				$cedula=$_POST['cedula'];
 				$telefono = $_POST['telefono'];
-				$id_vehiculo = $_POST['id_vehiculo'];
+				$unidad = $_POST['placa'];
 
 				$this->choferes->setNombre($nombre);
 				$this->choferes->setApellido($apellido);
 				$this->choferes->setCedula($cedula);
 				$this->choferes->setTelefono($telefono);
 				$this->choferes->setPlaca($placa);
+				var_dump($vehiculos);
 				//Agregar un Consultar para ver si existe Antes de Guardar o Rechazar;
 				$result = $this->choferes->ConsultarOne();
 				if($result['ejecucion']==true){

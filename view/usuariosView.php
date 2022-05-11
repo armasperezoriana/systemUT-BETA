@@ -55,6 +55,7 @@
                                 </center>
                             </div>
                             <div class="imagenmodulo">
+                               
                                 <img src="assets/img/undraw_profile.svg" class="img-profile rounded-circle" width="20%" float="right" ; display:block;>
                             </div>
                         </div>
