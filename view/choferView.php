@@ -70,11 +70,11 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Vehiculo</th>
                                             <th>Nombre</th>
                                             <th>Apellido</th>
-                                            <th>Cedula</th>
-                                            <th>Telefono</th>
+                                            <th>Cédula</th>
+                                            <th></th>
+                                            <th></th>
                                              <th><center>Acciones</center></th>
                                               <th></th>
                                                   <th></th>
@@ -86,12 +86,11 @@
                                             <?php if (!empty($value['id_choferes'])): ?>
                                         <tr>
                                             <td><?=$value['id_choferes']?></td>
-                                            <td><?=$value['placa']?></td>
                                             <td><?=$value['nombre']?></td>
                                             <td><?=$value['apellido']?></td>
                                             <td><?=$value['cedula']?></td>
-                                            <td><?=$value['telefono']?></td>
-                                  
+                                            <td></td>
+                                               <td></td> 
                                             <td>
                                                 <div class="col-sm-7" style='text-align:right;'>
 
@@ -106,6 +105,7 @@
                                     </td>
 <td>
                        <div class="col-sm-7" style='text-align:right;'>
+
 
                                                             <a href="#" data-id="<?= $value['id_choferes'] ?>" class="btn btn-warning btn-icon-split editar" name="editar">
                                                                 <span class="icon text-white-50">
@@ -183,32 +183,32 @@
                                 </button>
                             </div>
 
-<div class="modal-body">
-<div class="row">
-    <div class="form-group col-sm-12 col-md-6">
-        <label for="nombre"><b>Nombre</b></label>
-        <input type="text" class="form-control" name="nombre" id="nombre">
-        <span class="errorNombre" style="color:red"></span>
-    </div>
-    <div class="form-group col-sm-12 col-md-6">
-        <label for="apellido"><b>Apellido</b></label>
-        <input type="text" class="form-control" name="apellido" id="apellido">
-        <span class="errorApellido" style="color:red"></span>
-    </div>
-</div>
-<div class="row">
-    <div class="form-group col-sm-12 col-md-6">
-        <label for="cedula"><b>Cedula</b></label>
-        <input type="text" class="form-control" name="cedula" id="cedula">
-        <span class="errorCedula" style="color:red"></span>
-    </div>
-    <div class="form-group col-sm-12 col-md-6">
-        <label for="telefono"><b>Telefono</b></label>
-        <input type="text" class="form-control" name="telefono" id="telefono">
-        <span class="errorTelefono" style="color:red"></span>
-    </div>
-</div>
- <div class="row">
+                                <div class="modal-body">
+                                <div class="row">
+                                    <div class="form-group col-sm-12 col-md-6">
+                                        <label for="nombre"><b>Nombre</b></label>
+                                        <input type="text" class="form-control" name="nombre" id="nombre">
+                                        <span class="errorNombre" style="color:red"></span>
+                                    </div>
+                                    <div class="form-group col-sm-12 col-md-6">
+                                        <label for="apellido"><b>Apellido</b></label>
+                                        <input type="text" class="form-control" name="apellido" id="apellido">
+                                        <span class="errorApellido" style="color:red"></span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-sm-12 col-md-6">
+                                        <label for="cedula"><b>Cedula</b></label>
+                                        <input type="text" class="form-control" name="cedula" id="cedula">
+                                        <span class="errorCedula" style="color:red"></span>
+                                    </div>
+                                    <div class="form-group col-sm-12 col-md-6">
+                                        <label for="telefono"><b>Telefono</b></label>
+                                        <input type="text" class="form-control" name="telefono" id="telefono">
+                                        <span class="errorTelefono" style="color:red"></span>
+                                    </div>
+                                </div>
+                                <div class="row">
                                     <div class="form-group col-sm-12 col-md-6">
                                       <label for="rol"><b>Unidad asignada</b></label>
                                         <select class="form-control select2" name="placa" id="placa">
@@ -233,8 +233,7 @@
 </div>
 </div>
 </div>
-</div>  
-
+</div> 
 
      </div>
 
@@ -249,7 +248,10 @@
             font-size:0.8em;
         }
     </style>
-    <div class="modal fade" id="ModificarChoferModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding:0;">
+<div class="modal fade" id="ModificarChoferModal" tabindex="-1" role="dialog" aria-hidden="true" value="<? const id = $chofer->id;  ?>
+" style="padding:0;">
+            <form id="modificarChofer" method="POST">
+                <input type="hidden" id="id_choferes" name="id_choferes">
         <div class="container">
                 <div class="modal-dialog">
                     <div class="" role="document">
@@ -265,24 +267,24 @@
 <div class="row">
     <div class="form-group col-sm-12 col-md-6">
         <label for="nombre"><b>Nombre</b></label>
-        <input type="text" class="form-control" name="nombre" id="nombre">
+        <input type="text" class="form-control" name="nombre" id="nombreM">
         <span class="errorNombre" style="color:red"></span>
     </div>
     <div class="form-group col-sm-12 col-md-6">
         <label for="apellido"><b>Apellido</b></label>
-        <input type="text" class="form-control" name="apellido" id="apellido">
+        <input type="text" class="form-control" name="apellido" id="apellidoM">
         <span class="errorApellido" style="color:red"></span>
     </div>
 </div>
 <div class="row">
     <div class="form-group col-sm-12 col-md-6">
         <label for="cedula"><b>Cedula</b></label>
-        <input type="text" class="form-control" name="cedula" id="cedula">
+        <input type="text" class="form-control" name="cedula" id="cedulaM">
         <span class="errorCedula" style="color:red"></span>
     </div>
     <div class="form-group col-sm-12 col-md-6">
         <label for="username"><b>Telefono</b></label>
-        <input type="text" class="form-control" name="telefono" id="telefono">
+        <input type="text" class="form-control" name="telefono" id="telefonoM">
         <span class="errorUsername" style="color:red"></span>
     </div>
 </div>
@@ -304,10 +306,12 @@
                     
 
             </div>
+
             <div class="modal-footer">
                 <button class=" btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                <a class="EnviarChoferRegistrar btn btn-primary" href="#">Agregar</a>
+                <a class="ModificarChofer btn btn-primary" href="#">Agregar</a>
             </div>
+             </form>
         </div>
     </div>
 </div>

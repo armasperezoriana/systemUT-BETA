@@ -81,8 +81,8 @@
                                             <th>Usuario</th>
                                             <th>Nombre</th>
                                             <th>Apellido</th>
-                                            <th>Rol</th>
-                                            <th>Correo</th>
+                                            <th></th>
+                                            <th></th>
                                                 <center>Acción</center>
 
                                             <th></th>
@@ -100,13 +100,15 @@
                                                     <td><?= $value['usuario'] ?></td>
                                                     <td><?= $value['nombre'] ?></td>
                                                     <td><?= $value['apellido'] ?></td>
-                                                    <td><?= $value['rol'] ?></td>
-                                                    <td><?= $value['correo'] ?></td>
+                                                    <td></td>
+                                                    <td></td>
                                                     <td>
 
                                                         <div class="col-sm-7" style='text-align:right;'>
 
                                                             <a href="#" data-id="<?= $value['id_usuario'] ?>" class="btn btn-info btn-icon-split consultar" name="consultar" >
+
+            
                                                                 <span class="icon text-white-50">
                                                                     <i class="fas fa-search"></i>
                                                                 </span>
@@ -385,6 +387,10 @@
                 </div>
             </form>
         </div>
+
+
+  <!-- MODAL DE CONSULTAR-->
+         
         <div class="modal fade" id="ConsultarUsuarioModal" tabindex="-1" role="dialog" aria-hidden="true" value="<? const id = $usuario->id;  ?>
 " style="padding:0;">
             <form id="consultarUsuario" method="POST">

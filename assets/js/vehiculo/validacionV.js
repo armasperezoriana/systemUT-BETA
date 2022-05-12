@@ -145,11 +145,6 @@ $(".ModificarVehiculos").click(function() {
         });
 
 
-
-
-
-
-
 // Inhabilitar Vehiculo
 $('body').on('click', '.inhabilitar', function (e) {
     e.preventDefault();
@@ -237,6 +232,7 @@ function validar(modificar = false) {
             mostrar($(this).attr('data-id'), "#modificarVehiculo", "#ModificarVehiculoModal");
         })
         $('.consultar').click(function(e){
+             
             e.preventDefault();
             mostrar($(this).attr('data-id'), "#consultarVehiculo", "#ConsultarVehiculoModal");
         })

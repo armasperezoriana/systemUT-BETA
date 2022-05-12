@@ -197,8 +197,6 @@
             mostrar($(this).attr('data-id'), "#consultarUsuario", "#ConsultarUsuarioModal");
         })
 
-//Modificar Usuario
-
 
         // Inhabilitar Usuario
         $('body').on('click', '.inhabilitar', function(e) {

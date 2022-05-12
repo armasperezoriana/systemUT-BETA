@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-05-2022 a las 22:06:37
+-- Tiempo de generación: 12-05-2022 a las 18:29:45
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 7.4.27
 
@@ -337,7 +337,25 @@ INSERT INTO `bitacora` (`id_bitacora`, `cedula`, `usuario`, `operacion`, `host`,
 (311, '26561633', 'root@localhost', 'Se Modifico un campo de esta tabla', 'localhost', '2022-05-05', '18:39:10', 'Usuario', NULL),
 (312, '$$%$$%%$', 'root@localhost', 'Se Modificaron los datos de un chofer', 'localhost', '2022-05-06', '15:22:36', 'Chofer', NULL),
 (313, '$$%$$%%$', 'root@localhost', 'Se Modificaron los datos de un chofer', 'localhost', '2022-05-06', '15:22:43', 'Chofer', NULL),
-(314, '$%%%$$$$', 'root@localhost', 'Se Modificaron los datos de un chofer', 'localhost', '2022-05-06', '15:22:50', 'Chofer', NULL);
+(314, '$%%%$$$$', 'root@localhost', 'Se Modificaron los datos de un chofer', 'localhost', '2022-05-06', '15:22:50', 'Chofer', NULL),
+(315, '$%%$%$%$', 'root@localhost', 'Se elimino un Chofer del registro', 'localhost', '2022-05-06', '16:09:46', 'Choferes', NULL),
+(316, '$%%%$$$$', 'root@localhost', 'Se elimino un Chofer del registro', 'localhost', '2022-05-06', '16:11:29', 'Choferes', NULL),
+(317, '$%%%$$$$', 'root@localhost', 'Se elimino un Chofer del registro', 'localhost', '2022-05-06', '16:11:47', 'Choferes', NULL),
+(318, '$$%$$%%$', 'root@localhost', 'Se elimino un Chofer del registro', 'localhost', '2022-05-06', '16:18:25', 'Choferes', NULL),
+(319, '$%%$$$%$', 'root@localhost', 'Se elimino un Chofer del registro', 'localhost', '2022-05-06', '16:18:25', 'Choferes', NULL),
+(320, '$%%$%%%$', 'root@localhost', 'Se elimino un Chofer del registro', 'localhost', '2022-05-06', '16:18:25', 'Choferes', NULL),
+(321, '$%%$%$%$', 'root@localhost', 'Se elimino un Chofer del registro', 'localhost', '2022-05-06', '16:18:26', 'Choferes', NULL),
+(322, '$$%$$%%$', 'root@localhost', 'Se elimino un Chofer del registro', 'localhost', '2022-05-06', '16:18:26', 'Choferes', NULL),
+(323, '26561633', 'root@localhost', 'Se inserto un nuevo chofer', 'localhost', '2022-05-10', '15:28:43', 'Chofer', NULL),
+(324, '28946711', 'root@localhost', 'Se Modifico un campo de esta tabla', 'localhost', '2022-05-10', '15:37:41', 'Usuario', NULL),
+(325, '30868382', 'root@localhost', 'Se inserto un nuevo chofer', 'localhost', '2022-05-10', '15:44:49', 'Chofer', NULL),
+(326, 'KVT47V', 'root@localhost', 'Se Modifico una ruta', 'localhost', '2022-05-10', '22:24:39', 'Ruta', NULL),
+(327, 'EAP685', 'root@localhost', 'Se Modifico una ruta', 'localhost', '2022-05-10', '22:24:45', 'Ruta', NULL),
+(328, 'KVT47V', 'root@localhost', 'Se Modifico una ruta', 'localhost', '2022-05-10', '22:24:52', 'Ruta', NULL),
+(329, 'VAS654', 'root@localhost', 'Se Modifico una ruta', 'localhost', '2022-05-10', '22:24:59', 'Ruta', NULL),
+(330, 'EAP685', 'root@localhost', 'Se Modifico una ruta', 'localhost', '2022-05-10', '22:25:05', 'Ruta', NULL),
+(331, '0101', 'root@localhost', 'Se Modifico un campo de esta tabla', 'localhost', '2022-05-12', '12:26:00', 'Usuario', NULL),
+(332, '26561633', 'root@localhost', 'Se Modifico un campo de esta tabla', 'localhost', '2022-05-12', '12:28:14', 'Usuario', NULL);
 
 -- --------------------------------------------------------
 
@@ -360,14 +378,8 @@ CREATE TABLE `choferes` (
 --
 
 INSERT INTO `choferes` (`id_choferes`, `placa`, `nombre`, `apellido`, `cedula`, `telefono`, `status`) VALUES
-(13, 'KOWP145', 'Erwin', 'Armas', '$$%$$%%$%%%$$%%%$$$$$%%%$$$/%%%$$%$$%%$%%$$$%%$$$$$$%%$', '04160360067', 1),
-(14, 'OGA1703', 'Oriana', 'Armas', '$%%$$$%$$%%$%%$$$%%$%$$$$$$$$$$/%%$$%$$$%%$%%$$$%%$%$%$$%%$%%$$', '04145448669', 0),
-(15, 'EAP685', 'Antonio', 'Perez', '$%%$%%%$$%%$%$$$$%%$$$$$$$$$$$$/%%$$%$$$%%$%%$$$%%$%$%$$%%%$$$$', '04245660045', 0),
-(16, 'VAS654', 'Juan', 'Jimenez', '$%%$%$%$$%%$%%%$$%%%$$$$$$$$$$$/%%$$$%$$%%$$$%$$%%$$%$$$%%$%$$$', '04127895541', 0),
-(17, 'EAP685', 'Orlando', 'Guerra', '$%%%$$$$$%%%$$%$$%%$%%$$$$$$$$$/%%$$$%$$%%$$%$$$%%$%$$$$%%$%$%$', '04165502352', 0),
-(18, 'KVT47V', 'Jose', 'Tillero', '$%%$%$%$$%%%$$%$$%%$%$$$$$$$$$$/%%$%%$$$%%$%$$$$%%$%%%$$%%%$$$$', '04169486868', 0),
-(19, 'KVT47V', 'Cefora', 'Armas', '$$%$$%%$%%%$$%%$%$$$$%%%$$$/%%$$%$$$%%$$%%$$%%$$$$$$%%%', '04147721353', 1),
-(20, 'OGA1703', 'Josmar', 'Rodriguez', '$%%%$$$$$%%$%$$$$%%%$$$$$%%%$$$/%%$$%$$$%%$%%$$$%%$$%%$$%%%$$%$', '04120225089', 1);
+(1, '445444zzz', 'Oriana ', 'Armas', '26561633', 'sssss', 1),
+(2, 'EAP685', 'Oriana ', 'Armas', '30868382', '0124563', 1);
 
 --
 -- Disparadores `choferes`
@@ -543,11 +555,11 @@ CREATE TABLE `rutas` (
 --
 
 INSERT INTO `rutas` (`id_ruta`, `placa`, `nombre_ruta`, `direccion_ruta`, `hora_salida`, `status`) VALUES
-(5, 'KVT47V', 'BarrioUnion', 'calle 4 con 6 hasta la macias', '01:15:00', 0),
-(2, 'EAP685', 'Centro', 'av.20 hasta la vargas', '12:15:00', 0),
-(3, 'KVT47V', 'SantaIsabel', 'principal calle 1 con dos', '12:15:00', 0),
-(4, 'VAS654', 'SantaRosa', 'calle 1 con dos', '12:15:00', 0),
-(6, 'EAP685', 'ZonaEste', 'Av, Lara hasta el sambil', '07:35:00', 0),
+(5, 'KVT47V', 'BarrioUnion', 'calle 4 con 6 hasta la macias', '01:15:00', 1),
+(2, 'EAP685', 'Centro', 'av.20 hasta la vargas', '12:15:00', 1),
+(3, 'KVT47V', 'SantaIsabel', 'principal calle 1 con dos', '12:15:00', 1),
+(4, 'VAS654', 'SantaRosa', 'calle 1 con dos', '12:15:00', 1),
+(6, 'EAP685', 'ZonaEste', 'Av, Lara hasta el sambil', '07:35:00', 1),
 (1, 'KOWP145', 'ZonaNorte', 'Zona norte, Yucatan', '12:30:00', 0);
 
 --
@@ -660,7 +672,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `cedula`, `usuario`, `nombre`, `apellido`, `contrasena`, `rol`, `status`, `correo`, `fechaRecuperacion`) VALUES
-(7, '0101', 'admin', 'admin', 'admin', '%$%$%%$%$$%$%%$%%%$/%%$$$$%$%%$$%$$$%%$%', 'Administrador', 0, '', '2022-05-02 14:59:45'),
+(7, '0101', 'admin', 'admin', 'admin', '', 'Administrador', 0, 'administrador@gmail.com', '2022-05-12 16:26:00'),
 (8, '26577823', 'jesus', 'jesus', 'jesus', '$%%$%%%$%$%$%%%$$%%/%%$%$%$$%%$$%$%$%%%$', 'Administrador', 1, '', '2022-04-17 19:03:02'),
 (9, '365874', 'usuario', 'usuario', 'usuario', '$$%$%%%$$%$$%%$%$$%$%%%$$$$/%%%$%$%$%%%$$%%$%%%$%$%$%%$$', 'UsuarioEstandar', 1, '', '2022-04-17 19:04:00'),
 (10, '10847107', 'usuariog', 'usuario', 'usuario', '$%%$$%%$$%%$%$$/%%$$$%$$%%$$%$$', 'UsuarioEstandar', 0, '', '2022-05-01 21:25:41'),
@@ -670,10 +682,10 @@ INSERT INTO `usuarios` (`id_usuario`, `cedula`, `usuario`, `nombre`, `apellido`,
 (15, '26561633', 'eliasA', 'Elias', 'Banderas', '1234', 'Administrador', 0, '', '2022-05-05 22:39:10'),
 (16, 'PRUEBA', 'PRUEBA', 'PRUEBA', 'PRUEBA', '', 'Administrador', 1, '', '2022-04-17 19:02:31'),
 (17, 'HHHH', 'rootHH', 'AntonioIH', 'HH', '1', 'Root', 0, '', '2022-04-14 01:59:37'),
-(18, '265616331', 'root', 'Oriana', 'Armas', '1234', 'Administrador', 1, '', '2022-04-18 19:55:48'),
+(18, '265616331', 'root', 'Oriana', 'Armas', '1234', 'Administrador', 0, '', '2022-05-12 16:28:14'),
 (19, '26561631', 'usuario', 'Ramirez', 'Armas', '0000', 'Root', 1, '', '2022-05-02 14:22:11'),
 (20, '955896661', 'samu', 'Rafael', 'Saml', '1234', 'Administrador', 1, '', '2022-05-02 14:09:45'),
-(21, '28946711', 'manuelita', 'Manuelita', 'Saenz', '1234', 'Administrador', 1, '', '2022-05-05 15:46:38'),
+(21, '28946711', 'manuelita', 'Manuelita', 'Saenz', '1234', 'Administrador', 0, '', '2022-05-10 19:37:41'),
 (22, '955896667777', 'hhhh', 'Oneida', 'Banderas', '', 'Root', 1, 'armasoriana98@gmail.comddd', '2022-05-05 21:47:16'),
 (23, '3333385', 'hhhh', 'Pueblo', 'Nuevo', '1234', 'Administrador', 1, 'armasoriana98@gmail.com', '2022-05-05 21:48:59');
 
@@ -717,14 +729,15 @@ INSERT INTO `vehiculos` (`id_vehiculo`, `placa`, `modelo`, `funcionamiento`, `no
 (1, 'OGA1703', 'Encava', 'Operativo', NULL, NULL, 0),
 (6, 'EAP685', 'Dodge', 'Operativo', NULL, NULL, 0),
 (7, 'KVT47V', 'BEDFORD', 'Operativo', NULL, NULL, 0),
-(8, '898PAJ4', 'Dodge', 'Operativo', NULL, NULL, 1),
+(8, '898PAJ111111', 'Dodge', 'Operativo', NULL, NULL, 0),
 (9, 'VAS654', 'Caio', 'Inoperante', NULL, NULL, 0),
-(10, 'KOWP145', 'Encava', 'Operativo', NULL, NULL, 1),
+(10, 'KOWP1456', 'Encava', 'Operativo', NULL, NULL, 1),
 (11, 'YYLA891', 'Kia', 'Operativo', NULL, NULL, 0),
 (12, 'GAP173', 'BEDFORD', 'Operativo', NULL, NULL, 1),
 (13, 'ORIANA123', 'Encava', '1', NULL, NULL, 0),
 (14, 'SANTI03', 'Encava', 'Operativo', NULL, NULL, 1),
-(15, 'ROA126', 'BEDFORD', 'Operativo', NULL, NULL, 1);
+(15, 'ROA126', 'BEDFORD', 'Operativo', NULL, NULL, 1),
+(16, '445444zzz', 'BEDFORD', 'Operativo', NULL, NULL, 0);
 
 --
 -- Índices para tablas volcadas
@@ -741,7 +754,8 @@ ALTER TABLE `bitacora`
 --
 ALTER TABLE `choferes`
   ADD PRIMARY KEY (`id_choferes`),
-  ADD UNIQUE KEY `cedula` (`cedula`);
+  ADD UNIQUE KEY `cedula` (`cedula`),
+  ADD UNIQUE KEY `placa` (`placa`);
 
 --
 -- Indices de la tabla `mantenimientos`
@@ -809,7 +823,7 @@ ALTER TABLE `vehiculos`
 -- AUTO_INCREMENT de la tabla `bitacora`
 --
 ALTER TABLE `bitacora`
-  MODIFY `id_bitacora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=315;
+  MODIFY `id_bitacora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=333;
 
 --
 -- AUTO_INCREMENT de la tabla `choferes`
@@ -834,31 +848,10 @@ ALTER TABLE `reparaciones`
 --
 
 --
--- Filtros para la tabla `mantenimientos`
+-- Filtros para la tabla `choferes`
 --
-ALTER TABLE `mantenimientos`
-  ADD CONSTRAINT `fk1_nombre` FOREIGN KEY (`nombre`) REFERENCES `taller` (`nombre`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_nombre_tipo` FOREIGN KEY (`nombre_tipo`) REFERENCES `tipos` (`nombre_tipo`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `mantenimientos_ibfk_1` FOREIGN KEY (`placa`) REFERENCES `vehiculos` (`placa`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `reparaciones`
---
-ALTER TABLE `reparaciones`
-  ADD CONSTRAINT `fk_nombre` FOREIGN KEY (`nombre`) REFERENCES `taller` (`nombre`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `reparaciones_ibfk_1` FOREIGN KEY (`placa`) REFERENCES `vehiculos` (`placa`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `rutas`
---
-ALTER TABLE `rutas`
-  ADD CONSTRAINT `rutas_ibfk_1` FOREIGN KEY (`placa`) REFERENCES `vehiculos` (`placa`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD CONSTRAINT `fk_rol` FOREIGN KEY (`rol`) REFERENCES `roles` (`nombre_rol`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `choferes`
+  ADD CONSTRAINT `fk_placa` FOREIGN KEY (`placa`) REFERENCES `vehiculos` (`placa`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

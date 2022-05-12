@@ -73,7 +73,7 @@
                                             <th>ID</th>
                                             <th>Vehiculo</th>
                                             <th>Modelo</th>
-                                            <th>Funcionamiento</th>
+                                            <th></th>
                                             <th></th>
                                             <th></th>
                                              <th><center>Acción</center></th>
@@ -89,20 +89,20 @@
                                             <td><?=$value['id_vehiculo']?></td>
                                             <td><?=$value['placa']?></td>
                                             <td><?=$value['modelo']?></td>
-                                            <td><?=$value['funcionamiento']?></td>
-                                            <td><?=$value['nombre_tipo']?></td>
-                                            <td><?=$value['id_mantenimiento']?></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
                                             <td> 
 
                     <div class="col-sm-7" style='text-align:right;'>
 
-                                                            <a  data-id="<?= $value['id_vehiculo'] ?>" class="btn btn-info btn-icon-split consultar" name="consultar" >
-                                                                <span class="icon text-white-50">
-                                                                    <i class="fas fa-search"></i>
-                                                                </span>
-                                                                <span class="text">Consultar</span>
-                                                            </a>
-                                                        </div>
+                    <a  data-id="<?= $value['id_vehiculo'] ?>" class="btn btn-info btn-icon-split consultar" name="consultar" >
+                        <span class="icon text-white-50">
+                            <i class="fas fa-search"></i>
+                        </span>
+                        <span class="text">Consultar</span>
+                    </a>
+                </div>
 
 
                                                     </td>
@@ -323,38 +323,38 @@
 
 
   <!-- MODAL DE CONSULTAR-->
+        
+
+   <div class="modal fade" id="ConsultarVehiculoModal" tabindex="-1" role="dialog" aria-hidden="true" style="padding:0;" value="<? const id = $vehiculo->id ?>" >
 
 
-        <div class="modal fade" id="ConsultarVehiculoModal" tabindex="-1" role="dialog" aria-hidden="true" value="<? const id = $vehiculo->id;  ?>
-" style="padding:0;">
-            <form id="consultarVehiculo" method="POST">
+              <form id="consultarVehiculo" method="POST">
+
                 <input type="hidden" id="id_vehiculo" name="id_vehiculo">
-                <div class="container">
-                    <div class="modal-dialog">
-                        <div class="" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header bg-primary" style="color:#FFF">
-                                    <h5 class="modal-title">
-                                        <center>Consultar Vehiculo</center>
-                                    </h5>
-                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">×</span>
-                                    </button>
-                                </div>
+        <div class="container">
+                <div class="modal-dialog">
+                    <div class="" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header bg-primary" style="color:#FFF">
+                                <h5 class="modal-title">Consultar Vehiculo</h5>
+                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
 
-                                <div class="col-sm-7" style='text-align:right;'>
-                                    <span href="#" data-toggle="modal" data-target="ConsultarVehiculoModal">
+                        <div class="col-sm-7" style='text-align:right;'>
+                                    <span href="#" data-toggle="modal" data-target="ModificarVehiculoModal">
 
                                     </span>
                                 </div>
 
-                                <div class="modal-body">
-                                         <div class="form-group col-sm-12 col-md-6">
-                                        <?php foreach ($vehiculo as $value): ?>
-                                            <?php if (($value['id_vehiculo'])): ?>
+                           <div class="modal-body">
+                            <div class="table-responsive">
+                                <div class="row">
+                                    <div class="form-group col-sm-12 col-md-6">
                                         
-                                        <label for="´placa"><b>Placa</b></label>
-                                        <input type="text" class="form-control" name="placa" id="placaM" >
+                                        <label for="placa"><b>Placa</b></label>
+                                        <input type="text" class="form-control" name="placa" id="placaM">
                                         <span class="errorPlaca" style="color:red"></span>
                                     </div>
                                     <div class="form-group col-sm-12 col-md-6">
@@ -378,35 +378,27 @@
                                         <label for="funcionamiento"><b>Funcionamiento</b></label>
                                         <select class="form-control select2" name="funcionamiento" id="funcionamientoM">
                                                   <option value="">...</option>
-                                                <option value="1">Operativo</option>
-                                                <option value="2">Inoperativo</option>
+                                                <option value="Operativo">Operativo</option>
+                                                <option value="Inoperativo">Inoperativo</option>
                                             </select>
                                          <span class="errorModelo" style="color:red"></span>
-                                         <?php endif ?>
-                            <?php endforeach ?>
+                                         
                                     </div>
                                     
-                                                    <div class="modal-footer">
-                                                        <button class=" btn btn-secondary" type="button" data-dismiss="modal">Cerrar</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="modal-footer">
+                                <button class=" btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                            
                             </div>
                         </div>
                     </div>
                 </div>
-            </form>
         </div>
-    </div>
-    </div>
+       </div>
+        </div>
+         </div>  
 
 
-    </div>
-
-
+     </div>
 
 
     <!-- MODULo de AYUDA -->

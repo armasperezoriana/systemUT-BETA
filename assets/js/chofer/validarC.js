@@ -2,18 +2,17 @@
 
         $(".EnviarChoferRegistrar").click(function() {
             var valido = validar();
-           
             if (valido == true) {
 
-                var nombre = $("#AgregarVehiculosModal").find("#nombre").val();                
-                var apellido = $("#AgregarVehiculosModal").find("#apellido").val();
-                var cedula =$("#AgregarVehiculosModal").find("#cedula").val();;
-                var placa = $("#AgregarVehiculosModal").find("#placa").val();
-                var telefono = $("#AgregarVehiculosModal").find("#telefono").val();
-             
+                var nombre = $("#AgregarChoferModal").find("#nombre").val();                
+                var apellido = $("#AgregarChoferModal").find("#apellido").val();
+                var cedula =$("#AgregarChoferModal").find("#cedula").val();;
+                var telefono = $("#AgregarChoferModal").find("#telefono").val();
+                var placa = $("#AgregarChoferModal").find("#placa").val();
+            
                 // alert(pass);
                 swal.fire({
-                    title: "¿Desea guardar los datos del conductor ingresados?",
+                    title: "¿Desea guardar los datos ingresados?",
                     text: "Estos datos serán guardados.",
                     type: "question",
                     showCancelButton: true,
@@ -30,16 +29,15 @@
                                 nombre: nombre,
                                 apellido: apellido,
                                 cedula: cedula,
-                                placa: placa,
                                 telefono: telefono,
-                    
+                                placa: placa,
                             },
                             success: function(respuesta) {
                                 // alert(respuesta);
                                 if (respuesta == "1") {
                                     swal.fire({
                                         type: 'success',
-                                        title: 'Registro del conductor guardado exitosamente',
+                                        title: 'Registro guardado exitosamente',
                                     }).then((isConfirm) => {
                                         location.href = './Chofer';
                                     });
@@ -72,12 +70,13 @@
             }
 
         });
-         $(".ModificarChofer").click(function() {
+
+        $(".ModificarChofer").click(function() {
             var valido = validar(true);
                
             if (valido == true) {
 
-                var id_usuario = $("#modificarChofer").find("#id_choferes").val();
+                var id_choferes = $("#modificarChofer").find("#id_choferes").val();
                 console.log($("#modificarChofer"))
                 console.log($("#modificarChofer").find("#nombre"));
                 var nombre = $("#modificarChofer").find("#nombre").val();
@@ -87,11 +86,11 @@
                 var apellido = $("#modificarChofer").find("#apellido").val();
                 var cedula =$("#modificarChofer").find("#cedula").val();;
                 var telefono = $("#modificarChofer").find("#telefono").val();
-                var placa = $("#modficarChofer").find("#placa").val();
-         
-                // alert(pass);
+                var placa = $("#modificarChofer").find("placa").val();
+               
+                 alert(pass);
                 swal.fire({
-                    title: "¿Desea guardar los datos ingresados?",
+                    title: "¿Desea modificar los datos ingresados?",
                     text: "Estos datos serán guardados.",
                     type: "question",
                     showCancelButton: true,
@@ -109,9 +108,8 @@
                                 nombre: nombre,
                                 apellido: apellido,
                                 cedula: cedula,
-                                telefono: telefono,
+                               telefono: telefono,
                                 placa: placa,
-                               
                             },
                             success: function(respuesta) {
                                 // alert(respuesta);
@@ -152,7 +150,6 @@
 
         });
 
-
         //
         $('.editar').click(function(e){
             e.preventDefault();
@@ -163,10 +160,8 @@
             mostrar($(this).attr('data-id'), "#consultarChofer", "#ConsultarChoferModal");
         })
 
-//Modificar Usuario
 
-
-        // Inhabilitar Usuario
+        // Inhabilitar Chofer
         $('body').on('click', '.inhabilitar', function(e) {
             e.preventDefault();
 
@@ -185,7 +180,7 @@
                 }
             })
         });
-        // Habilitar Usuario
+        // Habilitar Chofer
         $('body').on('click', '.habilitar', function(e) {
             e.preventDefault();
 
@@ -205,7 +200,6 @@
             })
         });
 
-    });
 
     function validar(modificar = false) {
         var form = "";
@@ -229,9 +223,9 @@
         var rtelefono = false;
 
         var placa = $(form).find("#placa").val();
-        var rPlaca = false;
+        var rplaca = false;
 
-    
+       
         if (nombre == "") {
             rnombre = false;
             $(".errorNombre").html("Debe ingresar su nombre");
@@ -254,13 +248,6 @@
             $(".errorCedula").html("");
             rcedula = true;
         }
-        if (telefono == "") {
-            rtelefono = false;
-            $(".errorTelefono").html("Debe ingresar su Telefono");
-        } else {
-            $(".errorTelefono").html("");
-            rtelefono = true;
-        }
         if (placa == "") {
             rplaca = false;
             $(".errorPlaca").html("Debe seleccionar su placa");
@@ -268,8 +255,14 @@
             $(".errorPlaca").html("");
             rplaca = true;
         }
-      }   
-    
+        if (telefono == "") {
+            rtelefono = false;
+            $(".errortelefono").html("Debe seleccionar su telefono");
+        } else {
+            $(".errortelefono").html("");
+            rtelefono = true;
+        }
+    }
 
     const mostrar = (id, formulario, modal) => {
         $.ajax({
@@ -277,13 +270,13 @@
             url: "Chofer/Mostrar/"+id,
             success: function (response) {
                 let json = JSON.parse(response);
-                let usuario = json.data;
-                $(formulario).find("#id_choferes").val(chofer.id_usuario);
+                let chofer = json.data; 
+                $(formulario).find("#id_choferes").val(chofer.id_choferes);
                 $(formulario).find("#nombre").val(chofer.nombre);
                 $(formulario).find("#apellido").val(chofer.apellido);
                 $(formulario).find("#telefono").val(chofer.telefono);
-                $(formulario).find("#placa").val(chofer.placa);
-
+                $(formulario).find("#cedula").val(chofer.cedula);
+                $(formulario).find("#telefono").val(chofer.telefono);
                 $(modal).modal('show');
             },
             error: function (response) {
@@ -315,7 +308,7 @@
     const habilitar = (id) => {
         $.ajax({
             type: "POST",
-            url: "Choferes/Habilitar/" + id,
+            url: "Chofer/Habilitar/" + id,
             success: function(response) {
                 const json = JSON.parse(response);
                 Swal.fire(
@@ -334,5 +327,5 @@
         });
     }
 
-
-       
+   
+});
