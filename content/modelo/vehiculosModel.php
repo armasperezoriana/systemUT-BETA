@@ -21,7 +21,7 @@
 		public function Consultar(){
 			
 			try {
-				$query = parent::prepare('SELECT * FROM vehiculos WHERE status = 1');
+				$query = parent::prepare('SELECT * FROM vehiculos ');
 				$respuestaArreglo = '';
 				$query->execute();
 				$query->setFetchMode(parent::FETCH_ASSOC);

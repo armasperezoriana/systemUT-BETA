@@ -3,6 +3,9 @@
 
 <head>
     <title><?php echo _NAMESYSTEM_; ?> | <?php if(!empty($action)){echo $action; } ?> <?php if(!empty($url)){echo $url;} ?></title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
 
@@ -69,11 +72,12 @@
                                         <tr>
                                             <th>Rif</th>
                                             <th>Nombre</th>
-                                            <th>Dirección</th>
-                                            <th>Información de Contacto</th>
+                                            <th></th>
+                                            <th></th>
                                           
                                              <th><center>Accion</center></th>
                                               <th></th>
+                                               <th></th>
                                         </tr>
                                     </thead>
                           
@@ -83,14 +87,30 @@
                                         <tr>
                                             <td><?=$value['rif']?></td>
                                             <td><?=$value['nombre']?></td>
-                                            <td><?=$value['direccion']?></td>
-                                            <td><?=$value['informacion_contacto']?></td>
+                                            <td></td>
+                                             <td></td>
+                                            <td>
+                                                    <div class="col-sm-7" style='text-align:right;'>
+
+                                                            <a href="#" data-id="<?= $value['id_taller'] ?>" class="btn btn-info btn-icon-split consultar" name="consultar" >
+
+            
+                                                                <span class="icon text-white-50">
+                                                                    <i class="fas fa-search"></i>
+                                                                </span>
+                                                                <span class="text">Consultar</span>
+                                                            </a>
+                                                        </div>
+            
+            
+                                                        </div></td>
                                         
                                             <td> 
 
+
                         <div class="col-sm-7" style='text-align:right;'>
 
-                 <a href="#" class="btn btn-warning btn-icon-split editarbtn" name="editar" id="'$value['id_usuario']'" href="#" data-toggle="modal" data-target="#ModificarTallerModal">
+                 <a href="#" class="btn btn-warning btn-icon-split editar" name="editar" data-id="<?= $value['id_taller'] ?>"data-toggle="modal" data-target="#ModificarTallerModal">
                                         <span class="icon text-white-50" >
                                             <i class="fas fa-flag"></i>
                                         </span>
@@ -98,20 +118,30 @@
                                     </a>
                         </div>
                     </td>
-                              <td> <div class="col-sm-7" style='text-align:right;'>
-
-                                  <a href="#" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#EliminarUsuarioModal">
-                                        <span class="icon text-white-50" >
-                                            <i class="fas fa-trash"></i>
-                                        </span>
-                                        <span class="text">Eliminar</span>
-                                    </a>
-                        </div></td>
-                                        </tr>
+                              <td>   <div class="col-sm-7" style='text-align:right;'>
+                                                            <?php if ($value['status'] == 1) { ?>
+                                                                <a href="#" data-id="<?= $value['id_taller'] ?>" class="btn btn-danger btn-icon-split inhabilitar" data-toggle="modal" data-target="">
+                                                                    <span class="icon text-white-50">
+                                                                        <i class="fas fa-trash"></i>
+                                                                    </span>
+                                                                    <span class="text">Eliminar</span>
+                                                                </a>
+                                                            <?php } else { ?>
+                                                                <a href="#" data-id="<?= $value['id_taller'] ?>" class="btn btn-outline-info btn-icon-split habilitar
+                                                                    " data-toggle="modal" data-target="">
+                                                                    <span class="icon text-info-50">
+                                                                        <i class="fas fa-trash-alt"></i>
+                                                                    </span>
+                                                                    <span class="text">Habilitar</span>
+                                                                </a>
+                                                            <?php } ?>
+                                                        </div>
+                                                    </td>
+                                                </tr>
 
                                             <?php endif ?>
                                         <?php endforeach ?>
-                                        
+
                                     </tbody>
                                 </table>
                             </div>
@@ -143,7 +173,7 @@
             font-size:0.8em;
         }
     </style>
-    <div class="modal fade" id="AgregarTallerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding:0;">
+    <div class="modal fade" id="AgregarTallerModal" tabindex="-1" role="dialog" aria-hidden="true" style="padding:0;">
         <div class="container">
                 <div class="modal-dialog">
                     <div class="" role="document">
@@ -176,7 +206,7 @@
                                     </div>
                                     <div class="form-group col-sm-12 col-md-6">
                                         <label for="contacto"><b>Informacion Contacto</b></label>
-                                        <input type="text" class="form-control" name="contacto" id="contacto">
+                                        <input type="text" class="form-control" name="informacion_contacto" id="informacion_contacto">
                                         <span class="errorContacto" style="color:red"></span>
                                     </div>
                                 </div>
@@ -199,16 +229,10 @@
 
 
 <!-- MODAL DE MODIFICAR-->
-      
-           <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-    <style type="text/css">
-        .modal{
-            font-size:0.8em;
-        }
-    </style>
-    <div class="modal fade" id="ModificarTallerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding:0;">
+    <div class="modal fade" id="ModificarTallerModal" tabindex="-1" role="dialog" aria-hidden="true" value="<? const id = $taller->id;  ?>
+" style="padding:0;">
+            <form id="modificarTaller" method="POST">
+                <input type="hidden" id="id_taller" name="id_taller">
         <div class="container">
                 <div class="modal-dialog">
                     <div class="" role="document">
@@ -219,6 +243,11 @@
                                     <span aria-hidden="true">×</span>
                                 </button>
                             </div>
+                             <div class="col-sm-7" style='text-align:right;'>
+                                    <span href="#" data-toggle="modal" data-target="ModificarTallerModal">
+
+                                    </span>
+                                </div>
                                <div class="modal-body">
                                 <div class="row">
                                     <div class="form-group col-sm-12 col-md-6">
@@ -227,26 +256,27 @@
                                         <span class="errorNombre" style="color:red"></span>
                                     </div>
                                     <div class="form-group col-sm-12 col-md-6">
-                                        <label for="apellido"><b>RIF</b></label>
-                                        <input type="text" class="form-control" name="apellido" id="apellido">
-                                        <span class="errorApellido" style="color:red"></span>
+                                        <label for="rif"><b>RIF</b></label>
+                                        <input type="text" class="form-control" name="rif" id="rif">
+                                        <span class="errorRif" style="color:red"></span>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-sm-12 col-md-6">
                                         <label for="cedula"><b>Direccion</b></label>
-                                        <input type="text" class="form-control" name="cedula" id="cedula">
-                                        <span class="errorCedula" style="color:red"></span>
+                                        <input type="text" class="form-control" name="direccion" id="direccion">
+                                        <span class="errorDireccion" style="color:red"></span>
                                     </div>
                                     <div class="form-group col-sm-12 col-md-6">
-                                        <label for="username"><b>Informacion Contacto</b></label>
-                                        <input type="text" class="form-control" name="username" id="username">
-                                        <span class="errorUsername" style="color:red"></span>
+                                        <label for="contacto"><b>Informacion Contacto</b></label>
+                                        <input type="text" class="form-control" name="informacion_contacto" id="informacion_contacto">
+                                        <span class="errorContacto" style="color:red"></span>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
+                                       <a class="ModificarTaller btn btn-primary" href="#">Guardar Cambios</a>
                                 <button class=" btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                                <a class="ModificarTaller btn btn-primary" href="#">Guardar Cambios</a>
+                            
                             </div>
 
                             </div>
@@ -257,6 +287,69 @@
 
 
      </div>
+
+     <!-- MODAL DE consultar -->
+
+    <div class="modal fade" id="ConsultarTallerModal" tabindex="-1" role="dialog" aria-hidden="true" value="<? const id = $taller->id;  ?>
+" style="padding:0;">
+            <form id="consultarTaller" method="POST">
+                <input type="hidden" id="id_taller" name="id_taller">
+        <div class="container">
+                <div class="modal-dialog">
+                    <div class="" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header bg-primary" style="color:#FFF">
+                                <h5 class="modal-title" id="exampleModalLabel">Consultar Taller</h5>
+                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                             <div class="col-sm-7" style='text-align:right;'>
+                                    <span href="#" data-toggle="modal" data-target="ConsultarTallerModal">
+
+                                    </span>
+                                </div>
+
+                               <div class="modal-body">
+                                <div class="row">
+                                    <div class="form-group col-sm-12 col-md-6">
+                                        <label for="nombre"><b>Nombre</b></label>
+                                        <input type="text" class="form-control-plaintext" name="nombre" id="nombre">
+                                        <span class="errorNombre" style="color:red"></span>
+                                    </div>
+                                    <div class="form-group col-sm-12 col-md-6">
+                                        <label for="rif"><b>RIF</b></label>
+                                        <input type="text" class="form-control-plaintext"  name="rif" id="rif">
+                                        <span class="errorRif" style="color:red"></span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-sm-12 col-md-6">
+                                        <label for="cedula"><b>Direccion</b></label>
+                                        <input type="text" class="form-control-plaintext" name="direccion" id="direccion">
+                                        <span class="errorDireccion" style="color:red"></span>
+                                    </div>
+                                    <div class="form-group col-sm-12 col-md-6">
+                                        <label for="contacto"><b>Informacion Contacto</b></label>
+                                        <input type="text" class="form-control-plaintext" name="informacion_contacto" id="informacion_contacto">
+                                        <span class="errorContacto" style="color:red"></span>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                
+                                <button class=" btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                            
+                            </div>
+
+                            </div>
+        </div>
+       </div>
+        </div>
+         </div>  
+
+
+     </div>
+
 
  <!-- MODULo de AYUDA -->
 

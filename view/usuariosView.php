@@ -462,7 +462,7 @@
                                                     <div class="row">
                                                         <div class="form-group col-sm-12 col-md-12">
                                                             <label for="correo"><b>Correo</b></label> 
-                                                            <input style="width: 100%;" type="email" class="form-control" name="correo" id="correo" value="<?= $value['correo'] ?>" class="form-control-plaintext" disabled  placeholder="example@gmail.com">
+                                                            <input style="width: 100%;" type="email" class="form-control" name="correo" id="correo"  class="form-control-plaintext" disabled  placeholder="example@gmail.com">
                                                             <span class="correo" style="color:red"></span>
                                                         </div>
                                                     </div>

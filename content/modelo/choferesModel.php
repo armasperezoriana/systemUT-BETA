@@ -22,7 +22,7 @@
 		public function Consultar(){
 			
 			try {
-				$query = parent::prepare('SELECT * FROM choferes WHERE status = 1');
+				$query = parent::prepare('SELECT * FROM choferes');
 				$respuestaArreglo = '';
 				$query->execute();
 				$query->setFetchMode(parent::FETCH_ASSOC);
@@ -82,7 +82,7 @@
 					}
 				}
 
-				$query = parent::prepare("INSERT INTO usuarios (id_chofer, cedula,  nombre, apellido, telefono, placa, status) VALUES ($id, '{$this->cedula}', '{$this->nombre}', '{$this->apellido}', '{$this->telefono}','{$this->placa}', 1)");
+				$query = parent::prepare("INSERT INTO usuarios (id_choferes, cedula,  nombre, apellido, telefono, placa, status) VALUES ($id, '{$this->cedula}', '{$this->nombre}', '{$this->apellido}', '{$this->telefono}','{$this->placa}', 1)");
 				$respuestaArreglo = '';
 				$query->execute();
 				$query->setFetchMode(parent::FETCH_ASSOC);
@@ -98,23 +98,41 @@
 
 
 
-		public function Modificar(){
-			try{
-				$query = parent::prepare("UPDATE choferes SET cedula = '$this->cedula', nombre = '$this->nombre', 
-					apellido = '$this->apellido', telefono = '$this->telefono',placa = '$this->placa'
-					WHERE id_choferes = $this->id_choferes");
-				$respuestaArreglo = '';
-				$query->execute();
-				$query->setFetchMode(parent::FETCH_ASSOC);
-				$respuestaArreglo = $query->fetchAll(parent::FETCH_ASSOC); 
-				$respuestaArreglo += ['ejecucion' => true];
-				return $respuestaArreglo;
-			} 
-			 catch (PDOException $e) {
-				$errorReturn = ['ejecucion' => false];
-				$errorReturn += ['info' => "error sql:{$e}"];
-				return $errorReturn;
+		public function Modificar()
+			{
+				$method = $_SERVER['REQUEST_METHOD'];
+				if ($method != 'POST') {
+					http_response_code(404);
+					return false;
+				}if (!empty($_POST['nombre']) && !empty($_POST['apellido'])) {
+			$id_chofer = $_POST['id_chofer'];
+			$nombre = $_POST['nombre'];
+			$apellido = $_POST['apellido'];
+			$cedula = $_POST['cedula'];
+			$telefono = $_POST['telefono'];
+			$placa = $_POST['placa'];
+			
+			$this->chofer->setId($id_chofer);
+			$this->chofer->setNombre($nombre);
+			$this->chofer->setApellido($apellido);
+			$this->chofer->setCedula($cedula);
+			$this->chofer->setUsername($telefono);
+			$this->chofer->setPlaca($placa);
+		
+			
+			//Agregar un Consultar para ver si existe Antes de Guardar o Rechazar;
+			// $result = $this->usuario->ConsultarOne();
+			$execute = $this->chofer->Modificar();
+			//Codigo de bitacora 
+			if ($execute['ejecucion'] == true) {
+				echo '1';
+			} else {
+				echo "2";
 			}
+		}
+
+
+
 		}
 
 

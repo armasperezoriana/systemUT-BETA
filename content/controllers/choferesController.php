@@ -41,7 +41,7 @@
         $chofer = $this->chofer->ObtenerOne($param);
         http_response_code(200);
         echo json_encode([
-            'data' => $choferes
+            'data' => $chofer
         ]);
     }
 
@@ -54,19 +54,19 @@
 				$telefono = $_POST['telefono'];
 				$unidad = $_POST['placa'];
 
-				$this->choferes->setNombre($nombre);
-				$this->choferes->setApellido($apellido);
-				$this->choferes->setCedula($cedula);
-				$this->choferes->setTelefono($telefono);
-				$this->choferes->setPlaca($placa);
+				$this->chofer->setNombre($nombre);
+				$this->chofer->setApellido($apellido);
+				$this->chofer->setCedula($cedula);
+				$this->chofer->setTelefono($telefono);
+				$this->chofer->setPlaca($placa);
 				var_dump($vehiculos);
 				//Agregar un Consultar para ver si existe Antes de Guardar o Rechazar;
-				$result = $this->choferes->ConsultarOne();
+				$result = $this->chofer->ConsultarOne();
 				if($result['ejecucion']==true){
 					if(count($result)>1){
 						echo "3";
 					}else{
-						$execute = $this->usuario->Agregar();
+						$execute = $this->chofer->Agregar();
 						//Codigo de bitacora sobre Agregar Usuario
 						if($execute['ejecucion']==true){
 							echo '1';
@@ -92,20 +92,20 @@
 				$apellido=$_POST['apellido'];
 				$cedula=$_POST['cedula'];
 				$telefono = $_POST['telefono'];
-				$id_vehiculo = $_POST['id_vehiculo'];
+				$placa = $_POST['id_vehiculo'];
 
-				$this->choferes->setNombre($nombre);
-				$this->choferes->setApellido($apellido);
-				$this->choferes->setCedula($cedula);
-				$this->choferes->setTelefono($telefono);
-				$this->choferes->setPlaca($placa);
+				$this->chofer->setNombre($nombre);
+				$this->chofer->setApellido($apellido);
+				$this->chofer->setCedula($cedula);
+				$this->chofer->setTelefono($telefono);
+				$this->chofer->setPlaca($placa);
 				//Agregar un Consultar para ver si existe Antes de Guardar o Rechazar;
-				$result = $this->choferes->ConsultarOne();
+				$result = $this->chofer->ConsultarOne();
 				if($result['ejecucion']==true){
 					if(count($result)>1){
 						echo "3";
 					}else{
-						$execute = $this->choferes->Agregar();
+						$execute = $this->chofer->Agregar();
 						//Codigo de bitacora sobre Agregar Usuario
 						if($execute['ejecucion']==true){
 							echo '1';
