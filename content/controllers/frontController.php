@@ -33,7 +33,7 @@
 			$this->controlador = _CONTROLLER_;  
 		}
 		public function Controller(){
-			$this->controller = $this->url[0] == '' ? 'Home' : $this->url[0];
+			$this->controller = $this->url[0] == '' ? 'Login' : $this->url[0];
 			$this->url[0] = $this->controller;
 		}
 		public function Method(){
