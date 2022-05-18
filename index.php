@@ -9,7 +9,10 @@
 		}
 		die($html404); 
 	}
-	session_start();
+
+	if(!isset($_SESSION)) {
+		session_start();
+	}
 	
 	use config\settings\sysConfig as sysConfig; 
 

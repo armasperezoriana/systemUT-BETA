@@ -65,6 +65,21 @@
 				return $errorReturn;
 			}
 		}
+		public function ObtenerUsuario($usuario){
+			try {
+				$query = parent::prepare("SELECT * FROM usuarios WHERE usuario = '$usuario' LIMIT 1");
+				$respuestaArreglo = '';
+				$query->execute();
+				$query->setFetchMode(parent::FETCH_ASSOC);
+				$respuestaArreglo = ['resultado' => $query->fetch(parent::FETCH_ASSOC)];
+				$respuestaArreglo += ['ejecucion' => true];
+				return $respuestaArreglo;
+			} catch (PDOException $e) {
+				$errorReturn = ['ejecucion' => false];
+				$errorReturn += ['info' => "error sql:{$e}"];
+				return $errorReturn;
+			}
+		}
 		
 
 		public function Agregar(){

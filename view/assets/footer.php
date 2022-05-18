@@ -42,7 +42,7 @@
                     <div class="modal-body">Selecciona "Cerrar Sesión" para terminar la sesion actual.</div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                        <a class="btn btn-primary" href="<?=_ROUTE_ ?>Login">Cerrar Sesión</a>
+                        <a class="btn btn-primary" href="<?=_ROUTE_ ?>login/logout">Cerrar Sesión</a>
                     </div>
                 </div>
             </div>
