@@ -96,7 +96,8 @@
 
                     <div class="col-sm-7" style='text-align:right;'>
 
-                    <a  data-id="<?= $value['id_vehiculo'] ?>" class="btn btn-info btn-icon-split consultar" name="consultar" >
+                    <a  data-id="<?= $value['id_vehiculo'] ?>" class="btn btn-info btn-icon-split consultar" name="consultar">
+
                         <span class="icon text-white-50">
                             <i class="fas fa-search"></i>
                         </span>
@@ -196,12 +197,12 @@
                                 <div class="row">
                                     <div class="form-group col-sm-12 col-md-6">
                                         <label for="placa"><b>Placa</b></label>
-                                        <input type="text" class="form-control" name="placa" id="placaM">
+                                        <input type="text" class="form-control" name="placa" id="placa">
                                         <span class="errorPlaca" style="color:red"></span>
                                     </div>
                                     <div class="form-group col-sm-12 col-md-6">
                                         <label for="modelo"><b>Modelo</b></label>
-                                        <select class="form-control select2" name="modelo" id="modeloM">
+                                        <select class="form-control select2" name="modelo" id="modelo">
                                                   <option value="">...</option>
                                                 <option value="Otro">Otro</option>
                                                 <option value="Encava">Encava</option>
@@ -249,7 +250,7 @@
    <div class="modal fade" id="ModificarVehiculoModal" tabindex="-1" role="dialog" aria-hidden="true" style="padding:0;" data-id="<?= $value['id_vehiculo'] ?>">
 
 
-              <form id="modificarVehiculo" method="POST">
+        <form id="modificarVehiculo" method="POST">
 
                 <input type="hidden" id="id_vehiculo" name="id_vehiculo">
         <div class="container">
@@ -297,7 +298,7 @@
                                
                                <div class="form-group col-sm-12 col-md-6">
                                         <label for="funcionamiento"><b>Funcionamiento</b></label>
-                                        <select class="form-control select2" name="funcionamiento" id="funcionamientoM">
+                                        <select class="form-control select2" name="funcionamiento" id="funcionamiento">
                                                   <option value="">...</option>
                                                 <option value="Operativo">Operativo</option>
                                                 <option value="Inoperativo">Inoperativo</option>
@@ -305,11 +306,12 @@
                                          <span class="errorModelo" style="color:red"></span>
                                          
                                     </div>
-                                    
+                       
                             <div class="modal-footer">
                                 <button class=" btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
                                 <a class="ModificarVehiculos btn btn-primary" href="#">Guardar cambios</a>
                             </div>
+                             </form> 
                         </div>
                     </div>
                 </div>
@@ -325,7 +327,7 @@
   <!-- MODAL DE CONSULTAR-->
         
 
-   <div class="modal fade" id="ConsultarVehiculoModal" tabindex="-1" role="dialog" aria-hidden="true" style="padding:0;" value="<? const id = $vehiculo->id ?>" >
+   <div class="modal fade" id="ConsultarVehiculoModal" tabindex="-1" role="dialog" aria-hidden="true" style="padding:0;" data-id="<?= $value['id_vehiculo'] ?>" >
 
 
               <form id="consultarVehiculo" method="POST">
@@ -343,7 +345,7 @@
                             </div>
 
                         <div class="col-sm-7" style='text-align:right;'>
-                                    <span href="#" data-toggle="modal" data-target="ModificarVehiculoModal">
+                                    <span href="#" data-toggle="modal" data-target="ConsultarVehiculoModal">
 
                                     </span>
                                 </div>
@@ -354,12 +356,12 @@
                                     <div class="form-group col-sm-12 col-md-6">
                                         
                                         <label for="placa"><b>Placa</b></label>
-                                        <input type="text" class="form-control" name="placa" id="placaM">
+                                        <input type="text" class="form-control" name="placaM" id="placaM">
                                         <span class="errorPlaca" style="color:red"></span>
                                     </div>
                                     <div class="form-group col-sm-12 col-md-6">
                                         <label for="Modelo"><b>Modelo</b></label>
-                                        <select class="form-control select2" name="modelo" id="modeloM" >
+                                        <select class="form-control select2" name="modeloM" id="modeloM" >
                                                   <option value="">...</option>
                                                 <option value="Otro">Otro</option>
                                                 <option value="Encava">Encava</option>
@@ -376,7 +378,7 @@
                                
                                <div class="form-group col-sm-12 col-md-6">
                                         <label for="funcionamiento"><b>Funcionamiento</b></label>
-                                        <select class="form-control select2" name="funcionamiento" id="funcionamientoM">
+                                        <select class="form-control select2" name="funcionamientoM" id="funcionamientoM">
                                                   <option value="">...</option>
                                                 <option value="Operativo">Operativo</option>
                                                 <option value="Inoperativo">Inoperativo</option>
@@ -389,6 +391,7 @@
                                 <button class=" btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
                             
                             </div>
+                             </form> 
                         </div>
                     </div>
                 </div>
