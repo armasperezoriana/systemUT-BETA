@@ -30,7 +30,7 @@ $(document).ready(function () {
                             funcionamiento: funcionamiento,
                         },
                         success: function (respuesta) {
-                            // alert(respuesta);
+                            console.log(respuesta);
                             if (respuesta == "1") {
                                 swal.fire({
                                     type: 'success',
